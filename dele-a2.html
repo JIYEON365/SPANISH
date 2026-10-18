@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>DELE A2 총정리 — 독해·듣기·작문·회화</title>
+<style>
+:root{
+ --bg:#f6f7fb;--surface:#fff;--text:#20242a;--muted:#667085;--line:#e3e5ea;--th:#f0f2f6;
+ --accent:#5b5bd6;--accent-2:#7777e8;--accent-soft:#eeeefb;--accent-ink:#4545a0;
+ --soft:#eef0ff;--green:#eaf8f0;--yellow:#fff7df;--red:#fdecec;
+ --formula:#1d2030;--formula-ink:#fff;--ok:#18794e;--warn:#a15c00;--bad:#b42318;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+ --bg:#14161c;--surface:#1d2028;--text:#e7e9ee;--muted:#9aa3b2;--line:#2e3240;--th:#262a33;
+ --accent:#8b8bf0;--accent-2:#6a6ad8;--accent-soft:#2a2b4a;--accent-ink:#c3c3ff;
+ --soft:#252945;--green:#1b3127;--yellow:#352d1b;--red:#3a1f1f;
+ --formula:#0d0f15;--formula-ink:#f1f1f6;--ok:#4fd393;--warn:#f0b35a;--bad:#ff8a80;}}
+:root[data-theme="dark"]{
+ --bg:#14161c;--surface:#1d2028;--text:#e7e9ee;--muted:#9aa3b2;--line:#2e3240;--th:#262a33;
+ --accent:#8b8bf0;--accent-2:#6a6ad8;--accent-soft:#2a2b4a;--accent-ink:#c3c3ff;
+ --soft:#252945;--green:#1b3127;--yellow:#352d1b;--red:#3a1f1f;
+ --formula:#0d0f15;--formula-ink:#f1f1f6;--ok:#4fd393;--warn:#f0b35a;--bad:#ff8a80;}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 120px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans KR","Malgun Gothic",Arial,sans-serif;line-height:1.65}
+.wrap{max-width:1080px;margin:auto;padding:20px 14px 60px}
+header{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-radius:20px;padding:22px 20px;margin-bottom:12px}
+h1{margin:0 0 5px;font-size:26px;line-height:1.3}header p{margin:0;opacity:.92}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(10px);padding:8px 0 6px}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:7px}
+.cat{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:12px;padding:8px 4px;cursor:pointer;font-weight:700;font-size:14px}
+.cat.active{background:var(--text);color:var(--bg);border-color:var(--text)}
+.tabs{display:flex;gap:7px;overflow-x:auto;padding-bottom:2px;scrollbar-width:thin}
+.tab{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:7px 12px;white-space:nowrap;cursor:pointer;font-weight:700;font-size:14px}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tab[hidden]{display:none}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.panel{display:none}.panel.active{display:block}
+h2{font-size:23px;margin:26px 0 12px;border-left:5px solid var(--accent);padding-left:10px;line-height:1.35}
+h3{font-size:18px;margin:24px 0 9px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:13px 14px;margin:9px 0}
+.soft{background:var(--soft)}.green{background:var(--green)}.yellow{background:var(--yellow)}.red{background:var(--red)}
+.es{font-size:17px;font-weight:700}.ko{color:var(--muted)}
+.small{font-size:13px;color:var(--muted)}
+.tbl{overflow-x:auto;margin:10px 0}
+table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:12px;overflow:hidden}
+th,td{border:1px solid var(--line);padding:9px;vertical-align:top;text-align:left}th{background:var(--th)}
+.badge{display:inline-block;background:var(--accent-soft);color:var(--accent-ink);border-radius:999px;padding:2px 8px;font-size:12px;margin:2px}
+.new{display:inline-block;background:var(--green);color:var(--ok);border-radius:6px;padding:0 6px;font-size:12px;font-weight:700;vertical-align:middle;margin-left:4px}
+.formula{background:var(--formula);color:var(--formula-ink);border-radius:13px;padding:15px;margin:12px 0}
+.question{font-weight:700;color:var(--accent-ink)}
+.search{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text);font-size:15px;margin:0 0 8px}
+.search-result{display:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px;margin-bottom:10px;max-height:50vh;overflow:auto}
+.hit{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);color:var(--text);padding:8px;cursor:pointer;font:inherit}
+.hit:last-child{border-bottom:0}.hit:hover{background:var(--soft)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.grid .card{margin:0}
+.tbox{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}
+.ok{color:var(--ok);font-weight:700}.warn{color:var(--warn);font-weight:700}.bad{color:var(--bad);font-weight:700}
+ul,ol{padding-left:22px}li{margin:3px 0}
+.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,40%{box-shadow:0 0 0 3px var(--accent)}100%{box-shadow:0 0 0 0 transparent}}
+.check{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.check:last-child{border-bottom:0}.check input{margin-top:5px;width:18px;height:18px;flex:none}
+.btn{border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:10px;padding:9px 14px;font-weight:700;cursor:pointer;font-size:15px}
+.btn.ghost{background:transparent;color:var(--accent)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);cursor:pointer;font:inherit;font-size:16px}
+.opt.right{background:var(--green);border-color:var(--ok)}.opt.wrong{background:var(--red);border-color:var(--bad)}
+.big{font-size:22px;font-weight:800;line-height:1.4}
+.flip{min-height:150px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;user-select:none}
+.timer{font-variant-numeric:tabular-nums;font-size:28px;font-weight:800}
+select{padding:9px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:15px}
+.model{white-space:pre-line}
+.wc{font-size:12px;color:var(--muted)}
+@media (max-width:520px){h1{font-size:22px}.cat{font-size:13px}h2{font-size:20px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+
+/* 모바일 가독성 */
+body{word-break:keep-all;overflow-wrap:break-word;-webkit-text-size-adjust:100%}
+td,th{line-height:1.55}
+.nb{white-space:nowrap}
+table.vocab td:first-child{font-weight:600;width:55%}
+table.conj{font-size:15px}
+table.conj th,table.conj td{white-space:nowrap;padding:7px 8px}
+table.conj td:first-child{color:var(--muted);font-size:14px}
+table.conj td:first-child b{color:var(--text);font-size:15px}
+.sub{display:block;font-size:12.5px;color:var(--muted);font-weight:400;white-space:normal}
+details.card summary{cursor:pointer;list-style:none}
+details.card summary::-webkit-details-marker{display:none}
+details.card summary::after{content:" 👀";font-size:14px}
+details.card[open] summary{margin-bottom:6px}
+details.card[open] .es{color:var(--ok)}
+@media (max-width:600px){
+ .cat{white-space:nowrap;font-size:12.5px;padding:8px 2px;letter-spacing:-.2px}
+ .wrap{padding:16px 12px 60px}
+ body{font-size:16px}
+ .es{font-size:16.5px}
+ th,td{padding:8px 10px}
+ table.stack,table.stack tbody,table.stack tr,table.stack td{display:block;width:100%}
+ table.stack{background:transparent;border-radius:0}
+ table.stack tr:first-child{display:none}
+ table.stack tr{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:0 0 8px;overflow:hidden}
+ table.stack td{border:0;border-top:1px solid var(--line);padding:7px 12px}
+ table.stack td:first-child{border-top:0;background:var(--th);font-weight:700}
+ table.stack td:not(:first-child)[data-label]::before{content:attr(data-label);display:block;font-size:12px;color:var(--muted);font-weight:700}
+ table.vocab td:first-child{width:52%}
+}
+</style>
+</head>
+<body>
+<div class="app-topbar" style="position:sticky;top:0;z-index:9999;background:#243d52;color:white;padding:9px 14px;display:flex;gap:14px;align-items:center;font:14px system-ui,sans-serif;box-shadow:0 2px 8px #0002"><a href="index.html" style="color:white;text-decoration:none;font-weight:700">← 스페인어 공부 홈</a><span style="opacity:.8">|</span><a href="dele-a2.html" style="color:white;text-decoration:none">DELE A2 총정리</a><a href="speaking.html" style="color:white;text-decoration:none">회화 치트시트</a></div>
+
+<div class="wrap">
+<header>
+<h1>🇪🇸 DELE A2 총정리 노트</h1>
+<p>시험 전략(독해·듣기·작문·회화) · 주제별 어휘와 답변 재료 · 시제와 핵심 문법 · 퀴즈 연습까지</p>
+</header>
+<nav aria-label="섹션 이동" class="nav">
+<div class="cats" id="cats">
+<button class="cat active" data-cat="exam">📋 시험 전략</button>
+<button class="cat" data-cat="topic">🗂️ 주제별</button>
+<button class="cat" data-cat="gram">⏰ 문법·시제</button>
+<button class="cat" data-cat="drill">🎯 연습</button>
+</div>
+<div class="tabs" id="tabs">
+<button class="tab active" data-cat="exam" data-tab="overview">시험 개요·4주 계획</button>
+<button class="tab" data-cat="exam" data-tab="reading">📖 독해</button>
+<button class="tab" data-cat="exam" data-tab="listening">🎧 듣기</button>
+<button class="tab" data-cat="exam" data-tab="writing">✍️ 작문</button>
+<button class="tab" data-cat="exam" data-tab="speaking">🗣️ 회화</button>
+<button class="tab" data-cat="exam" data-tab="examiner">🙋 감독관에게 묻기</button>
+<button class="tab" data-cat="topic" data-tab="common">⭐ 공통 표현</button>
+<button class="tab" data-cat="topic" data-tab="people">🏠 사람·주거</button>
+<button class="tab" data-cat="topic" data-tab="describe">🙂 묘사·일상·축제</button>
+<button class="tab" data-cat="topic" data-tab="shopping">🛍️ 쇼핑·외식</button>
+<button class="tab" data-cat="topic" data-tab="health">🏥 건강·위생</button>
+<button class="tab" data-cat="topic" data-tab="study">📚 공부·문화</button>
+<button class="tab" data-cat="topic" data-tab="work">💼 직장·일</button>
+<button class="tab" data-cat="topic" data-tab="leisure">✈️ 여가·여행·통신</button>
+<button class="tab" data-cat="topic" data-tab="city">🌦️ 날씨·도시·교통</button>
+<button class="tab" data-cat="gram" data-tab="tense">⏰ 동사 시제</button>
+<button class="tab" data-cat="gram" data-tab="grammar">🧩 핵심 문법</button>
+<button class="tab" data-cat="gram" data-tab="questions">❓ 질문 만들기</button>
+<button class="tab" data-cat="gram" data-tab="connectors">🔗 연결 표현</button>
+<button class="tab" data-cat="drill" data-tab="quiz">✅ 시제 퀴즈</button>
+<button class="tab" data-cat="drill" data-tab="flash">🃏 단어 카드</button>
+<button class="tab" data-cat="drill" data-tab="random">🎲 랜덤 회화 질문</button>
+</div>
+</nav>
+<input aria-label="전체 검색" class="search" id="search" placeholder="🔎 전체 검색: porque, andén, me duele, estuve, 날씨…" type="search"/>
+<div class="search-result" id="searchResult" role="list"></div>
+<section class="panel active" id="overview">
+<h2>📋 DELE A2 시험 구조 한눈에</h2>
+<div class="tbl"><table class="stack">
+<tr><th>영역</th><th>시간</th><th style="white-space:nowrap">구성</th><th>무엇을 보나</th></tr>
+<tr><td data-label="영역">📖 독해<br/><span class="small">Comprensión de lectura</span></td><td data-label="시간">60분</td><td data-label="구성" style="white-space:nowrap">4과제</td><td data-label="무엇을 보나">공지·광고, 이메일·편지, 짧은 기사, 사람과 텍스트 연결하기</td></tr>
+<tr><td data-label="영역">🎧 듣기<br/><span class="small">Comprensión auditiva</span></td><td data-label="시간">40분</td><td data-label="구성" style="white-space:nowrap">4과제</td><td data-label="무엇을 보나">짧은 대화, 안내 방송, 전화·라디오 메시지, 일상 대화</td></tr>
+<tr><td data-label="영역">✍️ 작문<br/><span class="small">Expresión e interacción escritas</span></td><td data-label="시간">45분</td><td data-label="구성" style="white-space:nowrap">2과제</td><td data-label="무엇을 보나">메시지·이메일에 답장 / 경험·일상을 서술하는 글</td></tr>
+<tr><td data-label="영역">🗣️ 회화<br/><span class="small">Expresión e interacción orales</span></td><td data-label="시간">준비 12분 + 시험 12분</td><td data-label="구성" style="white-space:nowrap">4과제</td><td data-label="무엇을 보나">주제 발표, 사진 묘사, 상황 롤플레이, 면접관과 대화</td></tr>
+</table></div>
+<div class="card soft"><b>합격 기준:</b> 100점 만점, 두 그룹에서 각각 <b>50점 중 30점 이상</b>이 필요해요.<br/>
+<b>그룹 1</b> = 독해 + 작문 · <b>그룹 2</b> = 듣기 + 회화<br/>
+<span class="small">한 그룹 점수가 아무리 높아도 다른 그룹이 30점 미만이면 불합격이에요. 그래서 약한 영역을 버리지 말고 "최소 15점씩"을 목표로 잡는 게 안전해요.</span></div>
+<div class="card yellow"><b>꼭 확인하세요:</b> 시험 형식은 바뀔 수 있어요. 시험 전에 Instituto Cervantes 공식 사이트(examenes.cervantes.es)의 <b>A2 모의고사(modelo de examen)</b>를 한 번 직접 풀어 보고 과제 수·시간·단어 수를 최종 확인하세요.</div>
+<h2>🗓️ 남은 4주 학습 계획</h2>
+<div class="tbl"><table class="stack">
+<tr><th>주차</th><th>목표</th><th>할 일</th></tr>
+<tr><td data-label="주차">1주차</td><td data-label="목표">기초 다지기</td><td data-label="할 일">시제 5개 + 불규칙 동사 암기 · 주제 탭 4개 어휘 · 작문 공식 외우기</td></tr>
+<tr><td data-label="주차">2주차</td><td data-label="목표">주제 확장</td><td data-label="할 일">나머지 주제 어휘 · 이메일 답장 3편, 경험 글 3편 쓰기 · 사진 묘사 연습</td></tr>
+<tr><td data-label="주차">3주차</td><td data-label="목표">실전 감각</td><td data-label="할 일">공식 모의고사 1회를 <b>실제 시간</b>으로 · 틀린 문제를 "실수 노트"에 정리 · 회화 녹음</td></tr>
+<tr><td data-label="주차">4주차</td><td data-label="목표">마무리</td><td data-label="할 일">모의고사 1–2회 추가 · 약한 영역 집중 · 시험 3일 전부터는 새 내용 대신 복습만</td></tr>
+</table></div>
+<div class="card green"><b>하루 루틴 (약 1시간 반):</b> 단어 카드 20분 → 듣기 20분(같은 음원 2번) → 독해 1지문 15분 → 작문 1편 20분 → 랜덤 질문 답하며 녹음 10분</div>
+<h3>✅ 진도 체크리스트 <span class="small">(이 기기 브라우저에 저장돼요)</span></h3>
+<div class="card" id="checklist">
+<label class="check"><input data-k="c1" type="checkbox"/><span>현재·현재완료·단순과거·불완료과거·ir a 구분해서 예문 하나씩 말할 수 있다</span></label>
+<label class="check"><input data-k="c2" type="checkbox"/><span>핵심 불규칙 동사 20개의 과거형과 과거분사를 안다</span></label>
+<label class="check"><input data-k="c3" type="checkbox"/><span>주제 8개 각각 1분 이상 말할 수 있다</span></label>
+<label class="check"><input data-k="c4" type="checkbox"/><span>이메일 답장을 60–70단어로 15분 안에 쓸 수 있다</span></label>
+<label class="check"><input data-k="c5" type="checkbox"/><span>과거 경험 글을 단순과거 + 불완료과거로 쓸 수 있다</span></label>
+<label class="check"><input data-k="c6" type="checkbox"/><span>사진을 보고 2분 동안 묘사할 수 있다 (hay / está / están + gerundio)</span></label>
+<label class="check"><input data-k="c7" type="checkbox"/><span>가게·식당·병원·역 롤플레이 표현을 안다</span></label>
+<label class="check"><input data-k="c8" type="checkbox"/><span>안내 방송의 숫자·시간·플랫폼 번호를 받아 적을 수 있다</span></label>
+<label class="check"><input data-k="c9" type="checkbox"/><span>공식 모의고사를 실제 시간으로 1회 이상 풀었다</span></label>
+<label class="check"><input data-k="c10" type="checkbox"/><span>시험장·준비물·신분증을 확인했다</span></label>
+</div>
+<h3>📌 시험 당일</h3>
+<ul>
+<li>접수 때 등록한 <b>신분증</b>과 수험표, 필기구를 챙기고 일찍 도착하기.</li>
+<li>독해·듣기는 답안지에 옮겨 적는 시간을 꼭 남기기. 오답 감점이 없으니 <b>빈칸 없이 모두 표시</b>하기.</li>
+<li>작문은 단어 수를 대충 세면서 쓰기 — 너무 짧으면 감점, 지나치게 길어도 실수만 늘어요.</li>
+<li>회화 준비 시간에는 문장 전체가 아니라 <b>키워드와 연결어</b>만 메모하기.</li>
+</ul>
+</section>
+<section class="panel" id="reading">
+<h2>📖 독해 전략</h2>
+<div class="formula"><b>독해 순서:</b> ① 제목·텍스트 종류 확인 → ② 질문과 선택지 먼저 읽기 → ③ 본문에서 키워드의 <b>다른 표현</b> 찾기 → ④ 부정어·예외 표현 확인 → ⑤ 답안지에 옮기기</div>
+<h3>자주 나오는 텍스트 종류</h3>
+<div class="grid">
+<div class="tbox"><b>짧은 공지·광고·표지판</b><br/>가게, 학원, 박물관, 아파트 게시판. 시간·가격·조건이 핵심.</div>
+<div class="tbox"><b>이메일·편지·블로그</b><br/>누가, 왜, 무엇을 부탁/제안하는지가 핵심.</div>
+<div class="tbox"><b>짧은 기사·안내문</b><br/>사람 소개, 행사, 도시 소개. 문단마다 주제 한 줄로 요약.</div>
+<div class="tbox"><b>사람 ↔ 텍스트 연결</b><br/>"누가 무엇을 원하는지"에 밑줄 → 조건이 <b>모두</b> 맞는 것 고르기.</div>
+</div>
+<h3>공지·표지판 필수 어휘</h3>
+<div class="tbl"><table class="vocab"><tr><th>스페인어</th><th>뜻</th></tr>
+<tr><td>abierto</td><td>영업 중</td></tr><tr><td>cerrado</td><td>닫힘</td></tr><tr><td>horario de atención</td><td>운영 시간</td></tr>
+<tr><td>de lunes a viernes</td><td>월–금</td></tr><tr><td>laborables</td><td>평일</td></tr><tr><td>festivos</td><td>공휴일</td></tr><tr><td>excepto domingos</td><td>일요일 제외</td></tr>
+<tr><td>entrada libre</td><td>자유 입장</td></tr><tr><td>entrada gratuita</td><td>무료 입장</td></tr><tr><td>plazas limitadas</td><td>인원 제한</td></tr>
+<tr><td>prohibido fumar</td><td>흡연 금지</td></tr><tr><td>prohibido aparcar</td><td>주차 금지</td></tr><tr><td>no se permiten animales</td><td>동물 출입 금지</td></tr>
+<tr><td>rebajas</td><td>세일</td></tr><tr><td>oferta</td><td>특가</td></tr><tr><td>descuento</td><td>할인</td></tr><tr><td>dos por uno</td><td>1+1</td></tr>
+<tr><td>se alquila</td><td>임대</td></tr><tr><td>se vende</td><td>매매</td></tr><tr><td>se busca</td><td>구함</td></tr>
+<tr><td>inscripción</td><td>신청</td></tr><tr><td>matrícula</td><td>등록</td></tr><tr><td>plazo</td><td>기한</td></tr>
+<tr><td>imprescindible</td><td>필수의</td></tr><tr><td>obligatorio</td><td>의무의</td></tr><tr><td>opcional</td><td>선택의</td></tr>
+<tr><td>a partir de</td><td>~부터</td></tr><tr><td>hasta</td><td>~까지</td></tr><tr><td>antes de</td><td>~전에</td></tr><tr><td>después de</td><td>~후에</td></tr>
+<tr><td>empujar</td><td>미시오</td></tr><tr><td>tirar</td><td>당기시오</td></tr><tr><td>salida de emergencia</td><td>비상구</td></tr><tr><td>aseos</td><td>화장실</td></tr>
+<tr><td>fuera de servicio</td><td>고장/운행 중지</td></tr><tr><td>no funciona</td><td>작동 안 함</td></tr><tr><td>en obras</td><td>공사 중</td></tr>
+</table></div>
+<h3>🔁 같은 뜻, 다른 표현 (정답은 거의 늘 바꿔 말해요)</h3>
+<div class="tbl"><table class="stack"><tr><th>본문</th><th>선택지</th><th>뜻</th></tr>
+<tr><td data-label="본문">barato</td><td data-label="선택지">económico · a buen precio</td><td data-label="뜻">저렴한</td></tr>
+<tr><td data-label="본문">gratis</td><td data-label="선택지">gratuito · sin coste · no hay que pagar</td><td data-label="뜻">무료</td></tr>
+<tr><td data-label="본문">empezar</td><td data-label="선택지">comenzar · iniciar</td><td data-label="뜻">시작하다</td></tr>
+<tr><td data-label="본문">terminar</td><td data-label="선택지">acabar · finalizar</td><td data-label="뜻">끝내다</td></tr>
+<tr><td data-label="본문">necesario</td><td data-label="선택지">imprescindible · obligatorio · hay que</td><td data-label="뜻">필요한</td></tr>
+<tr><td data-label="본문">cerca de</td><td data-label="선택지">a pocos minutos de · al lado de</td><td data-label="뜻">가까이</td></tr>
+<tr><td data-label="본문">ir a pie</td><td data-label="선택지">ir andando · caminar</td><td data-label="뜻">걸어가다</td></tr>
+<tr><td data-label="본문">los niños</td><td data-label="선택지">los menores · los pequeños</td><td data-label="뜻">아이들</td></tr>
+<tr><td data-label="본문">las mascotas</td><td data-label="선택지">los animales domésticos</td><td data-label="뜻">반려동물</td></tr>
+<tr><td data-label="본문">el alojamiento</td><td data-label="선택지">el hotel · el hostal · el albergue</td><td data-label="뜻">숙소</td></tr>
+<tr><td data-label="본문">avisar</td><td data-label="선택지">informar · comunicar</td><td data-label="뜻">알리다</td></tr>
+</table></div>
+<h3>⚠️ 함정 신호어</h3>
+<div class="card red"><b>excepto / salvo</b> ~을 제외하고 · <b>solo</b> ~만 · <b>ya no</b> 더 이상 ~아니다 · <b>todavía no</b> 아직 ~아니다 · <b>no ... sino ...</b> ~가 아니라 ~이다 · <b>sin embargo / pero</b> 그러나 · <b>aunque</b> ~에도 불구하고 · <b>en cambio</b> 반면에</div>
+<div class="card green"><b>팁:</b> 본문에 나온 단어가 <b>그대로</b> 들어 있는 선택지는 오답 함정인 경우가 많아요. 의미가 맞는지 확인하세요.</div>
+</section>
+<section class="panel" id="listening">
+<h2>🎧 듣기 전략</h2>
+<div class="formula"><b>듣기 순서:</b> 음원 전 선택지 미리 읽고 상황 예측 → 1회차: 전체 흐름 → 2회차: 숫자·시간·장소 확인 → 마지막에 들린 정보가 정답인지 확인 (정정 함정)</div>
+<h3>🔢 숫자·시간 — 가장 많이 틀리는 부분</h3>
+<div class="tbl"><table class="vocab"><tr><th>헷갈리는 쌍</th><th>뜻</th></tr>
+<tr><td>quince (15)</td><td>15</td></tr><tr><td>cincuenta (50)</td><td>50</td></tr>
+<tr><td>dieciséis (16)</td><td>16</td></tr><tr><td>sesenta (60)</td><td>60</td></tr><tr><td>setenta (70)</td><td>70</td></tr>
+<tr><td>quinientos (500) · setecientos (700) · novecientos (900)</td><td>불규칙 백 단위</td></tr>
+<tr><td>las dos y cuarto</td><td>2시 15분</td></tr><tr><td>las dos y media</td><td>2시 반</td></tr><tr><td>las tres menos cuarto</td><td>2시 45분</td></tr>
+<tr><td>de la mañana</td><td>오전</td></tr><tr><td>de la tarde</td><td>오후</td></tr><tr><td>de la noche</td><td>밤</td></tr><tr><td>al mediodía</td><td>정오에</td></tr>
+<tr><td>el tres de mayo</td><td>5월 3일</td></tr><tr><td>el próximo martes</td><td>다음 화요일</td></tr><tr><td>dentro de dos días</td><td>이틀 뒤</td></tr>
+</table></div>
+<h3>📢 안내 방송 어휘 (역·공항·가게)</h3>
+<div class="tbl"><table class="vocab"><tr><th>스페인어</th><th>뜻</th></tr>
+<tr><td>señores pasajeros</td><td>승객 여러분</td></tr><tr><td>les informamos de que</td><td>알려 드립니다</td></tr><tr><td>se ruega</td><td>~해 주시기 바랍니다</td></tr>
+<tr><td>el andén</td><td>승강장</td></tr><tr><td>la vía</td><td>선로(몇 번 선)</td></tr><tr><td>la puerta de embarque</td><td>탑승구</td></tr>
+<tr><td>con destino a</td><td>~행</td></tr><tr><td>procedente de</td><td>~발</td></tr><tr><td>la próxima parada</td><td>다음 정류장</td></tr>
+<tr><td>el retraso</td><td>지연</td></tr><tr><td>cancelado</td><td>취소된</td></tr><tr><td>último aviso</td><td>마지막 안내</td></tr>
+<tr><td>facturar la maleta</td><td>짐을 부치다</td></tr><tr><td>la tarjeta de embarque</td><td>탑승권</td></tr>
+<tr><td>la planta baja</td><td>1층</td></tr><tr><td>la segunda planta</td><td>3층(스페인식 2층)</td></tr><tr><td>la caja</td><td>계산대</td></tr><tr><td>los probadores</td><td>탈의실</td></tr>
+</table></div>
+<h3>📞 전화·음성 메시지 표현</h3>
+<div class="card"><div class="es">Hola, soy Marta. Te llamo para decirte que...</div><div class="ko">안녕, 나 마르타야. ~라고 말하려고 전화했어.</div></div>
+<div class="card"><div class="es">Llámame cuando puedas. / Deja tu mensaje después de la señal.</div><div class="ko">시간 될 때 전화해. / 삐 소리 후 메시지를 남겨 주세요.</div></div>
+<div class="card"><div class="es">¿Quedamos a las siete en la puerta del cine?</div><div class="ko">7시에 영화관 입구에서 만날까?</div></div>
+<h3>⚠️ 정정·변경 신호어 — 이 뒤의 정보가 정답!</h3>
+<div class="card red"><b>perdón, mejor dicho</b> 아니 정확히는 · <b>al final</b> 결국 · <b>en realidad</b> 사실은 · <b>ha cambiado</b> 바뀌었다 · <b>en lugar de / en vez de</b> ~ 대신에 · <b>se ha cancelado</b> 취소되었다</div>
+<div class="card yellow"><div class="es">"Nos vemos a las cinco... no, perdón, a las seis, que salgo tarde del trabajo."</div><div class="ko">→ 정답은 <b>6시</b>. 처음 들린 숫자에 바로 표시하지 마세요.</div></div>
+<div class="card green"><b>연습법:</b> 스페인어 팟캐스트·뉴스(예: 학습자용 느린 뉴스)를 같은 구간 2번 듣고 → 받아쓰기 3문장 → 스크립트 확인. 매일 20분이면 충분해요.</div>
+</section>
+<section class="panel" id="writing">
+<h2>✍️ 작문 전략</h2>
+<div class="grid">
+<div class="tbox"><b>과제 1 · 메시지에 답하기</b><br/>친구·지인의 이메일/메시지를 읽고 답장. 요구 사항(감사, 수락/거절, 질문 등)을 <b>모두</b> 포함. <span class="badge">약 60–70단어</span></div>
+<div class="tbox"><b>과제 2 · 글쓰기 (2개 중 택1)</b><br/>경험·일상·추억을 서술하는 글, 블로그, 일기 등. 과거 시제 활용이 핵심. <span class="badge">약 70–80단어</span></div>
+</div>
+<div class="formula"><b>이메일 공식:</b> 인사 → 쓰는 이유(Te escribo para...) → 요구 사항 1·2·3 → 질문 하나 → 마무리 인사 → 서명</div>
+<h3>시작·마무리 표현</h3>
+<div class="tbl"><table class="stack"><tr><th></th><th>친구 (tú)</th><th>격식 (usted)</th></tr>
+<tr><td>인사</td><td data-label="친구 (tú)">¡Hola, Ana! · Querida Ana: · ¿Qué tal estás?</td><td data-label="격식 (usted)">Estimado señor López: · Estimada señora:</td></tr>
+<tr><td>목적</td><td data-label="친구 (tú)">Te escribo para... · Muchas gracias por tu mensaje.</td><td data-label="격식 (usted)">Le escribo para... · Me pongo en contacto con usted para...</td></tr>
+<tr><td>마무리</td><td data-label="친구 (tú)">Escríbeme pronto. · ¡Hasta pronto!</td><td data-label="격식 (usted)">Quedo a la espera de su respuesta.</td></tr>
+<tr><td>작별</td><td data-label="친구 (tú)">Un abrazo, · Un beso, · Besos,</td><td data-label="격식 (usted)">Atentamente, · Saludos cordiales,</td></tr>
+</table></div>
+<h3>기능별 문장 재료</h3>
+<div class="tbl"><table class="stack"><tr><th>기능</th><th>표현</th><th>뜻</th></tr>
+<tr><td data-label="기능">초대</td><td data-label="표현">¿Te apetece venir a...? · ¿Quieres venir conmigo a...?</td><td data-label="뜻">~에 올래?</td></tr>
+<tr><td data-label="기능">수락</td><td data-label="표현">¡Claro que sí! · Me encantaría ir. · ¡Qué buena idea!</td><td data-label="뜻">물론이지! · 정말 가고 싶어 · 좋은 생각이야!</td></tr>
+<tr><td data-label="기능">거절</td><td data-label="표현">Lo siento mucho, pero no puedo porque... · Me gustaría, pero...</td><td data-label="뜻">정말 미안하지만 ~ 때문에 못 가</td></tr>
+<tr><td data-label="기능">제안</td><td data-label="표현">¿Por qué no...? · ¿Qué te parece si...? · Podemos...</td><td data-label="뜻">~하는 게 어때? · ~하면 어때?</td></tr>
+<tr><td data-label="기능">약속</td><td data-label="표현">¿Quedamos el sábado a las seis? · ¿Dónde quedamos?</td><td data-label="뜻">토요일 6시에 만날까? · 어디서 만날까?</td></tr>
+<tr><td data-label="기능">감사</td><td data-label="표현">Muchas gracias por... · Te agradezco mucho...</td><td data-label="뜻">~해서 정말 고마워</td></tr>
+<tr><td data-label="기능">사과</td><td data-label="표현">Perdona por no contestar antes. · Siento no poder ir.</td><td data-label="뜻">답장이 늦어서 미안 · 못 가서 아쉬워</td></tr>
+<tr><td data-label="기능">추천</td><td data-label="표현">Te recomiendo... · Tienes que probar... · Es mejor...</td><td data-label="뜻">~를 추천해 · 꼭 ~해 봐</td></tr>
+<tr><td data-label="기능">소식 전하기</td><td data-label="표현">¿Sabes qué? · Te cuento que... · Por cierto, ...</td><td data-label="뜻">있잖아 · 말해 줄게 · 그런데 말이야</td></tr>
+</table></div>
+<h3>과거 이야기 연결어 (과제 2 필수)</h3>
+<div class="card"><b>primero</b> 먼저 · <b>después / luego</b> 그다음 · <b>más tarde</b> 나중에 · <b>al final</b> 마지막에 · <b>de repente</b> 갑자기 · <b>mientras</b> ~하는 동안 · <b>ese día</b> 그날 · <b>al día siguiente</b> 다음 날 · <b>por la mañana/tarde/noche</b> 아침/오후/밤에</div>
+<h3>📝 모범 답안 1 — 초대에 답장</h3>
+<div class="card small"><b>문제 예시:</b> 친구 Lucía가 토요일 생일 파티에 초대했어요. 감사 인사, 갈 수 있는지와 시간, 가져갈 것 제안, 질문 하나를 포함해 답장하세요.</div>
+<div class="card soft model es" data-count="">¡Hola, Lucía!
+Muchas gracias por tu invitación. ¡Qué ilusión! Me encantaría ir a tu fiesta, pero el sábado tengo que trabajar hasta las siete. ¿Te parece bien si llego a las ocho? Puedo llevar una tarta de chocolate, porque sé que te encanta. Por cierto, ¿qué te gustaría de regalo? ¿Va a venir también tu hermana?
+Un abrazo muy fuerte,
+(이름)</div>
+<h3>📝 모범 답안 2 — 기억에 남는 여행</h3>
+<div class="card small"><b>문제 예시:</b> 기억에 남는 여행에 대해 쓰세요. 언제, 누구와, 무엇을 했는지, 어땠는지 포함.</div>
+<div class="card soft model es" data-count="">El verano pasado fui a Barcelona con dos amigas. Hacía mucho calor, pero el tiempo era perfecto para ir a la playa. El primer día visitamos la Sagrada Familia y por la noche cenamos paella en un restaurante pequeño cerca del puerto. Al día siguiente paseamos por el barrio Gótico y compramos regalos para nuestras familias. Fue un viaje inolvidable porque nos reímos mucho y practiqué español con la gente. Me gustaría volver el próximo año.</div>
+<div class="card yellow"><b>왜 좋은 답안인가:</b> 사건은 단순과거(fui, visitamos, cenamos), 배경은 불완료과거(hacía, era), 느낌은 Fue + 형용사, 마지막은 미래 바람(Me gustaría...).</div>
+<h3>✔️ 제출 전 30초 점검</h3>
+<div class="card">
+<label class="check"><input type="checkbox"/><span>문제의 요구 사항을 <b>하나도 빠짐없이</b> 썼다</span></label>
+<label class="check"><input type="checkbox"/><span>단어 수가 범위 안이다</span></label>
+<label class="check"><input type="checkbox"/><span>시간 표현과 시제가 맞다 (ayer → 단순과거, nunca → 현재완료)</span></label>
+<label class="check"><input type="checkbox"/><span>명사-형용사 성·수 일치 (las playas bonitas)</span></label>
+<label class="check"><input type="checkbox"/><span>악센트: está, también, después, así, qué/cómo(의문문)</span></label>
+<label class="check"><input type="checkbox"/><span>역부호 ¿...? ¡...! 를 앞에 썼다</span></label>
+</div>
+</section>
+<section class="panel" id="speaking">
+<h2>🗣️ 회화 전략</h2>
+<div class="card soft">준비실에서 12분 동안 발표 주제와 사진을 보고 메모 → 면접관과 약 12분. 아래 4가지 유형을 모두 준비하세요.</div>
+<div class="grid">
+<div class="tbox"><b>주제 발표 (독백)</b><br/>주어진 주제에 대해 2–3분 혼자 말하기. 제시된 소주제를 순서대로 다루기.</div>
+<div class="tbox"><b>사진 묘사</b><br/>사진 속 장소, 사람, 행동, 분위기를 2–3분 묘사.</div>
+<div class="tbox"><b>상황 롤플레이</b><br/>가게·식당·호텔 등에서 손님/직원 역할로 대화.</div>
+<div class="tbox"><b>면접관과 대화</b><br/>발표 주제나 내 생활에 대한 질문에 답하기.</div>
+</div>
+<h3>① 주제 발표 템플릿</h3>
+<div class="formula">도입: Voy a hablar de... → 현재: Normalmente... → 과거 경험: Una vez... / El año pasado... → 의견: Creo que... porque... → 미래: En el futuro me gustaría... → 마무리: Y eso es todo, muchas gracias.</div>
+<div class="card green"><div class="es">Voy a hablar de mi trabajo. Trabajo en una empresa de electrodomésticos. Normalmente empiezo a las ocho y termino a las cinco. Me gusta mi trabajo porque mis compañeros son muy amables, pero a veces tengo mucho estrés. El año pasado trabajé en un proyecto muy interesante y aprendí mucho. En el futuro me gustaría trabajar en España. Y eso es todo, muchas gracias.</div><div class="ko">제 일에 대해 말하겠습니다. … (이 뼈대를 모든 주제에 재사용)</div></div>
+<h3>② 사진 묘사 표현</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>En la foto hay...</td><td>사진에는 ~가 있어요</td></tr><tr><td>Se ve(n)...</td><td>~가 보여요</td></tr>
+<tr><td>a la izquierda</td><td>왼쪽에</td></tr><tr><td>a la derecha</td><td>오른쪽에</td></tr><tr><td>en el centro</td><td>가운데</td></tr><tr><td>al fondo</td><td>뒤쪽에</td></tr>
+<tr><td>delante de</td><td>앞에</td></tr><tr><td>detrás de</td><td>뒤에</td></tr><tr><td>al lado de</td><td>옆에</td></tr><tr><td>encima de</td><td>위에</td></tr>
+<tr><td>Están + gerundio (están comiendo, está hablando)</td><td>~하고 있어요</td></tr>
+<tr><td>Lleva una camisa blanca.</td><td>흰 셔츠를 입고 있어요</td></tr><tr><td>Tiene unos treinta años.</td><td>서른 살쯤 됐어요</td></tr>
+<tr><td>Parece que...</td><td>~인 것 같아요</td></tr><tr><td>Creo que están en...</td><td>~에 있는 것 같아요</td></tr><tr><td>Seguramente...</td><td>아마</td></tr>
+<tr><td>Creo que es verano porque llevan ropa ligera.</td><td>가벼운 옷을 입어서 여름 같아요</td></tr>
+</table></div>
+<div class="formula"><b>사진 공식:</b> 장소(Creo que están en...) → 사람 수·외모(Hay tres personas...) → 행동(Están + gerundio) → 추측(Parece que... / Quizás...) → 내 경험(Yo también...)</div>
+<h3>③ 롤플레이 상황별</h3>
+<div class="tbl"><table><tr><th>상황</th><th>손님으로서 쓸 표현</th></tr>
+<tr><td>가게</td><td>Quería una camiseta. · ¿Me la puedo probar? · ¿La tiene en otra talla/otro color? · ¿Puedo pagar con tarjeta?</td></tr>
+<tr><td>식당</td><td>Una mesa para dos, por favor. · De primero quiero... · ¿Qué me recomienda? · La cuenta, por favor.</td></tr>
+<tr><td>호텔</td><td>Tengo una reserva a nombre de... · ¿El desayuno está incluido? · ¿A qué hora hay que dejar la habitación?</td></tr>
+<tr><td>병원·약국</td><td>Me duele la garganta. · Tengo fiebre desde ayer. · ¿Tiene algo para el dolor de cabeza?</td></tr>
+<tr><td>역·여행사</td><td>Un billete de ida y vuelta a Sevilla. · ¿A qué hora sale el próximo tren? · ¿De qué andén sale?</td></tr>
+<tr><td>불만·문제</td><td>Perdone, hay un problema con... · Quería cambiar esto. · No funciona.</td></tr>
+</table></div>
+<h3>④ 대화를 이어가는 표현</h3>
+<div class="grid">
+<div class="card"><div class="es">¿Y usted? / ¿Y tú?</div><div class="ko">당신은요?</div></div>
+<div class="card"><div class="es">¡Qué interesante! / ¿De verdad?</div><div class="ko">흥미롭네요! / 정말요?</div></div>
+<div class="card"><div class="es">No sé cómo se dice, pero es una cosa que sirve para...</div><div class="ko">어떻게 말하는지 모르지만 ~에 쓰는 물건이에요.</div></div>
+<div class="card"><div class="es">Lo que quiero decir es que...</div><div class="ko">제가 하고 싶은 말은 ~예요.</div></div>
+<div class="card"><div class="es">Déjeme pensar un momento.</div><div class="ko">잠깐 생각해 볼게요. (면접관에게 usted)</div></div>
+<div class="card"><div class="es">¿Qué significa "...", por favor?</div><div class="ko">"…"가 무슨 뜻이에요?</div></div>
+</div>
+<div class="card green"><b>채점 포인트:</b> 유창성(멈추지 않기), 문법 정확성, 어휘 범위, 발음. 완벽함보다 <b>계속 말하는 것</b>이 점수에 유리해요. 매일 1분 녹음 후 다시 들어 보세요 → 🎲 랜덤 회화 질문 탭 활용.</div>
+</section>
+<section id="examiner" class="panel">
+<h2>🙋 감독관에게 던지는 표현</h2>
+<div class="card soft">회화 시험은 <b>대화(interacción)</b>도 채점해요. 질문에 답만 하지 말고, 중간에 한두 번 감독관에게 되물어 보면 "상호작용 능력"이 드러나요. 길게 물을 필요 없이 <b>짧은 한 문장</b>이면 충분해요.</div>
+
+<div class="card yellow"><b>⚠️ 먼저 기억할 것</b><br>
+① 감독관에게는 기본적으로 <b>usted</b>를 써요. (¿Qué opina <b>usted</b>?)<br>
+② 롤플레이에서 "친구" 역할이라고 제시되면 <b>tú</b>로 바꿔요. (¿Qué <b>opinas</b>?) 과제 카드의 지시문을 꼭 확인하세요.<br>
+③ 한 주제에 되묻기는 <b>1번 정도</b>면 충분해요. 너무 자주 물으면 내 발화량이 줄어요.<br>
+④ 되물은 뒤에는 상대 답을 듣고 <b>짧게 반응</b>하세요: ¡Qué interesante! / Ah, entiendo.</div>
+
+<h3>① 의견 묻기 — "어떻게 생각하세요?"</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>¿Y usted qué piensa?</td><td>그럼 선생님은 어떻게 생각하세요?</td></tr>
+<tr><td>¿Qué opina usted?</td><td>선생님 의견은 어떠세요?</td></tr>
+<tr><td>¿Qué le parece?</td><td>어떻게 생각하세요? / 어떠세요?</td></tr>
+<tr><td>¿Está de acuerdo?</td><td>동의하세요?</td></tr>
+<tr><td>¿Usted cree que es una buena idea?</td><td>좋은 생각이라고 보세요?</td></tr>
+</table></div>
+<div class="card green"><div class="es">Para mí, viajar en grupo es más divertido. ¿Y usted qué piensa?</div><div class="ko">저는 단체 여행이 더 재미있어요. 선생님은 어떻게 생각하세요?</div></div>
+
+<h3>② 추천 묻기 — "뭘 추천하세요?"</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>¿Qué me recomienda?</td><td>뭘 추천하세요?</td></tr>
+<tr><td>¿Qué plato me recomienda?</td><td>어떤 요리를 추천하세요?</td></tr>
+<tr><td>¿Cuál me recomienda?</td><td>어느 것을 추천하세요?</td></tr>
+<tr><td>¿Qué lugar me recomienda visitar?</td><td>어디를 가 보라고 추천하세요?</td></tr>
+<tr><td>¿Qué me aconseja?</td><td>어떻게 하라고 조언하시겠어요?</td></tr>
+<tr><td>¿Usted qué haría en mi lugar?</td><td>제 입장이라면 어떻게 하시겠어요?</td></tr>
+<tr><td>¿Qué es lo mejor para...?</td><td>~에는 뭐가 가장 좋을까요?</td></tr>
+</table></div>
+<div class="card green"><div class="es">Es mi primera vez en Madrid. ¿Qué lugar me recomienda visitar?</div><div class="ko">마드리드는 처음이에요. 어디를 가 보라고 추천하세요?</div></div>
+
+<h3>③ 취향·경험 되묻기 — "그럼 선생님은요?"</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>¿Y usted?</td><td>선생님은요? (가장 쉽고 유용!)</td></tr>
+<tr><td>¿Y a usted, le gusta...?</td><td>선생님은 ~ 좋아하세요?</td></tr>
+<tr><td>¿Usted qué prefiere?</td><td>선생님은 뭘 더 좋아하세요?</td></tr>
+<tr><td>¿Usted qué suele hacer en su tiempo libre?</td><td>보통 여가 시간에 뭐 하세요?</td></tr>
+<tr><td>¿Ha estado usted alguna vez en Corea?</td><td>한국에 가 보신 적 있어요?</td></tr>
+<tr><td>¿Ha probado usted la comida coreana?</td><td>한국 음식을 드셔 보셨어요?</td></tr>
+<tr><td>¿Usted vive aquí desde hace mucho?</td><td>여기 오래 사셨어요?</td></tr>
+<tr><td>¿Conoce usted...?</td><td>~를 아세요? (장소·사람)</td></tr>
+</table></div>
+<div class="card yellow"><b>실수 주의:</b> 감독관에게 사생활을 깊이 묻는 것(나이, 월급 등)은 피하세요. 취향·경험·추천 정도가 안전해요.</div>
+
+<h3>④ 롤플레이 — 정보 요청</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>¿Cuánto cuesta / cuestan...?</td><td>얼마예요?</td></tr>
+<tr><td>¿A qué hora abre / cierra / sale...?</td><td>몇 시에 열어요 / 닫아요 / 출발해요?</td></tr>
+<tr><td>¿Dónde está / Dónde puedo...?</td><td>~가 어디 있어요? / 어디서 ~할 수 있어요?</td></tr>
+<tr><td>¿Tiene...? / ¿Tienen...?</td><td>~ 있나요?</td></tr>
+<tr><td>¿Hay alguna oferta?</td><td>할인 있나요?</td></tr>
+<tr><td>¿Cuánto tiempo se tarda en...?</td><td>~하는 데 시간이 얼마나 걸려요?</td></tr>
+<tr><td>¿Está incluido el desayuno?</td><td>조식이 포함돼 있나요?</td></tr>
+<tr><td>¿Qué diferencia hay entre... y...?</td><td>~와 ~는 뭐가 달라요?</td></tr>
+<tr><td>¿Me puede dar más información?</td><td>좀 더 자세히 알려 주실 수 있나요?</td></tr>
+<tr><td>¿Me puede ayudar, por favor?</td><td>도와주시겠어요?</td></tr>
+</table></div>
+
+<h3>⑤ 제안하기 — 상대와 함께 정할 때</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>¿Qué le parece si...?</td><td>~하면 어떠세요?</td></tr>
+<tr><td>¿Qué tal si quedamos el sábado?</td><td>토요일에 만나는 건 어때요?</td></tr>
+<tr><td>¿Le parece bien?</td><td>괜찮으세요?</td></tr>
+<tr><td>¿Le viene bien el viernes?</td><td>금요일 괜찮으세요? (일정)</td></tr>
+<tr><td>Podríamos ir juntos, ¿no?</td><td>같이 가면 되겠죠?</td></tr>
+<tr><td>¿Prefiere que...?</td><td>~하는 걸 더 좋아하세요?</td></tr>
+</table></div>
+<div class="card green"><div class="es">¿Qué le parece si quedamos a las siete en la puerta del cine?</div><div class="ko">7시에 영화관 입구에서 만나면 어떠세요?</div></div>
+
+<h3>⑥ 확인·되묻기 — 이해 못 했을 때</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>Perdone, ¿puede repetir, por favor?</td><td>죄송하지만 다시 말씀해 주실래요?</td></tr>
+<tr><td>¿Puede hablar más despacio?</td><td>조금 천천히 말씀해 주실래요?</td></tr>
+<tr><td>¿Quiere decir que...?</td><td>~라는 말씀인가요?</td></tr>
+<tr><td>Si no me equivoco, ...</td><td>제가 틀리지 않았다면…</td></tr>
+<tr><td>¿Qué significa "..."?</td><td>"…"가 무슨 뜻이에요?</td></tr>
+<tr><td>¿Cómo se dice "..." en español?</td><td>"…"를 스페인어로 뭐라고 해요?</td></tr>
+<tr><td>No sé cómo se dice, pero...</td><td>어떻게 말하는지 모르겠지만…</td></tr>
+<tr><td>¿Se refiere a...?</td><td>~를 말씀하시는 거예요?</td></tr>
+</table></div>
+
+<h3>⑦ 상대 말에 반응하기</h3>
+<div class="grid">
+<div class="card"><div class="es">¡Qué interesante!</div><div class="ko">흥미롭네요!</div></div>
+<div class="card"><div class="es">Ah, entiendo.</div><div class="ko">아, 이해했어요.</div></div>
+<div class="card"><div class="es">Tiene razón.</div><div class="ko">맞는 말씀이에요.</div></div>
+<div class="card"><div class="es">Es verdad, no lo había pensado.</div><div class="ko">맞네요, 생각 못 했어요.</div></div>
+<div class="card"><div class="es">Estoy de acuerdo con usted.</div><div class="ko">동의해요.</div></div>
+<div class="card"><div class="es">Gracias por la recomendación.</div><div class="ko">추천 감사해요.</div></div>
+<div class="card"><div class="es">Perfecto, me parece bien.</div><div class="ko">좋아요, 괜찮은 것 같아요.</div></div>
+<div class="card"><div class="es">Entonces, me quedo con...</div><div class="ko">그럼 ~로 할게요.</div></div>
+</div>
+
+<h3>⑧ 마무리하기</h3>
+<div class="grid">
+<div class="card"><div class="es">Muchas gracias por su ayuda.</div><div class="ko">도와주셔서 감사합니다.</div></div>
+<div class="card"><div class="es">Hasta luego. / Que tenga un buen día.</div><div class="ko">안녕히 계세요. / 좋은 하루 보내세요.</div></div>
+<div class="card"><div class="es">Ha sido un placer.</div><div class="ko">즐거웠습니다.</div></div>
+<div class="card"><div class="es">¿Quiere que le cuente algo más?</div><div class="ko">더 말씀드릴까요?</div></div>
+</div>
+
+<h3>⑨ usted ↔ tú 바꾸기</h3>
+<div class="tbl"><table class="stack"><tr><th>상황</th><th>감독관 (usted)</th><th>친구 역할 (tú)</th></tr>
+<tr><td>의견</td><td data-label="감독관 (usted)">¿Qué opina usted?</td><td data-label="친구 역할 (tú)">¿Qué opinas?</td></tr>
+<tr><td>의견</td><td data-label="감독관 (usted)">¿Qué le parece?</td><td data-label="친구 역할 (tú)">¿Qué te parece?</td></tr>
+<tr><td>추천</td><td data-label="감독관 (usted)">¿Qué me recomienda?</td><td data-label="친구 역할 (tú)">¿Qué me recomiendas?</td></tr>
+<tr><td>되묻기</td><td data-label="감독관 (usted)">¿Y usted?</td><td data-label="친구 역할 (tú)">¿Y tú?</td></tr>
+<tr><td>제안</td><td data-label="감독관 (usted)">¿Qué le parece si...?</td><td data-label="친구 역할 (tú)">¿Qué te parece si...?</td></tr>
+<tr><td>일정</td><td data-label="감독관 (usted)">¿Le viene bien el sábado?</td><td data-label="친구 역할 (tú)">¿Te viene bien el sábado?</td></tr>
+<tr><td>경험</td><td data-label="감독관 (usted)">¿Ha estado alguna vez en...?</td><td data-label="친구 역할 (tú)">¿Has estado alguna vez en...?</td></tr>
+</table></div>
+
+<h3>🎭 미니 대화 예시</h3>
+<div class="card soft"><b>식당 롤플레이</b><br>
+<div class="es">Buenas tardes. Una mesa para dos, por favor.</div>
+<div class="es">…</div>
+<div class="es">Quisiera ver la carta. ¿Qué me recomienda de primero?</div>
+<div class="es">…</div>
+<div class="es">Suena muy bien. ¿Es picante?</div>
+<div class="es">…</div>
+<div class="es">Entonces, me quedo con la sopa. Y de segundo, ¿qué plato me recomienda?</div>
+<div class="es">…</div>
+<div class="es">Perfecto. Y para beber, agua, por favor. Gracias.</div>
+<div class="ko">좋은 오후예요. 2인석 부탁해요. / 메뉴판 보고 싶어요. 첫 코스로 뭘 추천하세요? / 맛있겠네요. 매운가요? / 그럼 수프로 할게요. 메인은 어떤 걸 추천하세요? / 좋아요. 마실 건 물로 부탁해요.</div></div>
+<div class="card soft"><b>주제 대화 (여행)</b><br>
+<div class="es">Me gusta viajar con amigos porque es más divertido. Y usted, ¿prefiere viajar solo o acompañado?</div>
+<div class="es">…</div>
+<div class="es">Ah, ¿de verdad? Yo creo que viajar solo también puede ser interesante, pero prefiero compartir las experiencias.</div>
+<div class="ko">저는 친구랑 여행하는 게 더 재미있어요. 선생님은 혼자 여행하는 게 좋으세요, 같이 가는 게 좋으세요? / 아, 정말요? 혼자 여행도 재미있을 것 같지만 저는 경험을 나누는 게 좋아요.</div></div>
+<div class="card soft"><b>약속 잡기 (친구 역할)</b><br>
+<div class="es">¿Qué tal si vamos al cine este fin de semana?</div>
+<div class="es">…</div>
+<div class="es">Vale, el sábado me viene bien. ¿A qué hora quedamos?</div>
+<div class="es">…</div>
+<div class="es">Perfecto, nos vemos a las seis en la puerta. ¡Hasta el sábado!</div>
+<div class="ko">이번 주말에 영화 보러 갈까? / 좋아, 토요일 괜찮아. 몇 시에 만날까? / 완벽해, 6시에 입구에서 보자. 토요일에 봐!</div></div>
+
+<h3>🎯 사용 팁</h3>
+<div class="card green">
+<b>한 대화에서 이 정도면 충분해요</b><br>
+· 주제 대화: 되묻기 1번 (¿Y usted?)<br>
+· 롤플레이: 정보 질문 2–3개 + 확인 1번 (¿Está incluido...?)<br>
+· 막힐 때: ¿Cómo se dice "..."?로 단어를 물어 본 뒤 계속 말하기<br><br>
+<b>과제 지시문에 적힌 항목</b>(가격 묻기, 시간 확인 등)은 하나도 빠뜨리지 말고 질문으로 만들어 넣으세요.
+</div>
+</section>
+
+<section class="panel" id="common">
+<h2>⭐ 모든 주제에 공통으로 쓰는 표현</h2>
+<div class="formula"><b>답변 공식:</b> Pues... → 결론 → porque... → 이유 → Por ejemplo... → 예시 → Además... → 추가 → Por eso... → 마무리</div>
+<h3>말문을 열 때</h3>
+<div class="grid">
+<div class="card"><div class="es">Pues, ...</div><div class="ko">음, 글쎄요 / 우선...</div></div>
+<div class="card"><div class="es">Bueno, ...</div><div class="ko">음, 그런데 / 글쎄...</div></div>
+<div class="card"><div class="es">A ver, ...</div><div class="ko">어디 보자 / 음...</div></div>
+<div class="card"><div class="es">Déjame pensar. / Déjeme pensar.</div><div class="ko">생각 좀 해볼게요. (친구에게 / 면접관에게)</div></div>
+</div>
+<h3>의견·선호</h3>
+<div class="grid">
+<div class="card"><div class="es">Creo que ...</div><div class="ko">~라고 생각해요.</div></div>
+<div class="card"><div class="es">Para mí, ...</div><div class="ko">제 생각에는 / 저에게는...</div></div>
+<div class="card"><div class="es">Prefiero A a B.</div><div class="ko">B보다 A를 선호해요.</div></div>
+<div class="card"><div class="es">Me gusta más A que B.</div><div class="ko">B보다 A가 더 좋아요.</div></div>
+<div class="card"><div class="es">Depende de la situación.</div><div class="ko">상황에 따라 달라요.</div></div>
+<div class="card"><div class="es">Me parece que... / En mi opinión, ...</div><div class="ko">~인 것 같아요 / 제 의견으로는...</div></div>
+</div>
+<h3>동의·반대 <span class="new">추가</span></h3>
+<div class="grid">
+<div class="card"><div class="es">Estoy de acuerdo. / Tienes razón.</div><div class="ko">동의해요. / 맞아요.</div></div>
+<div class="card"><div class="es">No estoy de acuerdo porque...</div><div class="ko">~해서 동의하지 않아요.</div></div>
+<div class="card"><div class="es">A mí también. / A mí tampoco.</div><div class="ko">저도요(긍정에). / 저도 아니에요(부정에).</div></div>
+<div class="card"><div class="es">Es verdad, pero...</div><div class="ko">맞아요, 하지만...</div></div>
+</div>
+<h3>이유·연결</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>porque...</td><td>왜냐하면...</td></tr><tr><td>por eso...</td><td>그래서...</td></tr><tr><td>además...</td><td>게다가...</td></tr><tr><td>también...</td><td>또한...</td></tr><tr><td>por ejemplo...</td><td>예를 들어...</td></tr><tr><td>sobre todo...</td><td>특히...</td></tr>
+<tr><td>pero</td><td>하지만</td></tr><tr><td>sin embargo</td><td>그렇지만</td></tr><tr><td>como... (문장 맨 앞)</td><td>~이니까</td></tr><tr><td>aunque...</td><td>~이긴 하지만</td></tr><tr><td>cuando...</td><td>~할 때</td></tr><tr><td>si...</td><td>만약 ~하면</td></tr><tr><td>en primer lugar</td><td>첫째로</td></tr><tr><td>por último</td><td>마지막으로</td></tr>
+</table></div>
+<h3>빈도 표현 <span class="new">추가</span></h3>
+<div class="card"><b>siempre</b> 항상 · <b>normalmente</b> 보통 · <b>a menudo</b> 자주 · <b>a veces</b> 가끔 · <b>casi nunca</b> 거의 안 · <b>nunca</b> 절대 안 · <b>una vez a la semana</b> 일주일에 한 번 · <b>todos los días</b> 매일 · <b>los fines de semana</b> 주말마다</div>
+<h3>시험 중 막혔을 때</h3>
+<div class="card yellow"><div class="es">No estoy segura, pero creo que...</div><div class="ko">확실하진 않지만 ~인 것 같아요.</div></div>
+<div class="card yellow"><div class="es">¿Puede repetir la pregunta, por favor?</div><div class="ko">질문을 다시 말해 주실 수 있나요?</div></div>
+<div class="card yellow"><div class="es">¿Puede hablar un poco más despacio?</div><div class="ko">조금 더 천천히 말해 주실 수 있나요?</div></div>
+<div class="card yellow"><div class="es">Perdone, no he entendido bien.</div><div class="ko">죄송해요, 잘 이해하지 못했어요.</div></div>
+<div class="card green"><b>핵심:</b> 완벽한 문장 1개보다 쉬운 문장 3개를 연결하기.</div>
+</section>
+<section class="panel" id="people">
+<h2>🏠 1. Las personas y la vivienda</h2>
+<h3>핵심 단어</h3>
+<div class="tbl"><table class="vocab"><tr><th>스페인어</th><th>뜻</th></tr>
+<tr><td>la familia</td><td>가족</td></tr><tr><td>los padres</td><td>부모</td></tr><tr><td>el hermano</td><td>형제</td></tr><tr><td>la hermana</td><td>자매</td></tr><tr><td>la pareja</td><td>연인/배우자</td></tr>
+<tr><td>los abuelos</td><td>조부모</td></tr><tr><td>el tío</td><td>삼촌</td></tr><tr><td>la tía</td><td>이모/고모</td></tr><tr><td>el primo</td><td>사촌(남)</td></tr><tr><td>la prima</td><td>사촌(여)</td></tr>
+<tr><td>el amigo</td><td>친구(남)</td></tr><tr><td>la amiga</td><td>친구(여)</td></tr><tr><td>el vecino</td><td>이웃(남)</td></tr><tr><td>la vecina</td><td>이웃(여)</td></tr><tr><td>el compañero</td><td>동료/반 친구</td></tr>
+<tr><td>estar casado/a</td><td>기혼이다</td></tr><tr><td>estar soltero/a</td><td>미혼이다</td></tr><tr><td>tener hijos</td><td>자녀가 있다</td></tr>
+<tr><td>la casa</td><td>집</td></tr><tr><td>el piso</td><td>(스페인) 아파트</td></tr><tr><td>el apartamento</td><td>소형 아파트</td></tr><tr><td>el barrio</td><td>동네</td></tr>
+<tr><td>el salón</td><td>거실</td></tr><tr><td>el dormitorio</td><td>침실</td></tr><tr><td>la cocina</td><td>주방</td></tr><tr><td>el baño</td><td>욕실</td></tr><tr><td>el balcón</td><td>발코니</td></tr><tr><td>el ascensor</td><td>엘리베이터</td></tr>
+<tr><td>los muebles</td><td>가구</td></tr><tr><td>la cama</td><td>침대</td></tr><tr><td>el sofá</td><td>소파</td></tr><tr><td>la mesa</td><td>탁자</td></tr><tr><td>el armario</td><td>옷장</td></tr>
+<tr><td>cómodo/a</td><td>편안한</td></tr><tr><td>tranquilo/a</td><td>조용한</td></tr><tr><td>ruidoso/a</td><td>시끄러운</td></tr><tr><td>luminoso/a</td><td>밝은</td></tr><tr><td>céntrico/a</td><td>중심가의</td></tr>
+<tr><td>bien comunicado</td><td>교통이 좋은</td></tr><tr><td>amueblado</td><td>가구 딸린</td></tr><tr><td>exterior</td><td>바깥쪽 창이 있는</td></tr><tr><td>el alquiler</td><td>월세</td></tr>
+</table></div>
+<h3>필수 동사</h3><div class="card"><b>vivir</b> 살다 · <b>mudarse</b> 이사하다 · <b>alquilar</b> 임대하다 · <b>compartir</b> 공유하다 · <b>limpiar</b> 청소하다 · <b>ordenar</b> 정리하다 · <b>llevarse bien/mal con</b> ~와 사이가 좋다/나쁘다 · <b>parecerse a</b> ~를 닮다</div>
+<h3>바로 말할 수 있는 문장</h3>
+<div class="card soft"><div class="es">Vivo en un apartamento con mi familia.</div><div class="ko">가족과 아파트에 살아요.</div></div>
+<div class="card soft"><div class="es">Me gustaría vivir en una casa más grande porque sería más cómoda.</div><div class="ko">더 큰 집에서 살고 싶어요. 더 편할 것 같기 때문이에요.</div></div>
+<div class="card soft"><div class="es">Lo más importante para mí es que el barrio sea tranquilo y esté bien comunicado.</div><div class="ko">저에게 가장 중요한 것은 동네가 조용하고 교통이 편리한 것이에요.</div></div>
+<div class="card soft"><div class="es">Me llevo muy bien con mi hermana; nos parecemos mucho.</div><div class="ko">언니/여동생과 사이가 아주 좋아요. 우리는 많이 닮았어요.</div></div>
+<div class="card soft"><div class="es">Cuando era pequeña, vivía en una casa con jardín.</div><div class="ko">어렸을 때 정원이 있는 집에 살았어요. (불완료과거)</div></div>
+<h3>예상 질문</h3><div class="card"><div class="question">¿Cómo es tu casa?</div>→ Vivo en... / Tiene... / Está cerca de... / Me gusta porque...</div>
+<div class="card"><div class="question">¿Con quién vives?</div>→ Vivo con... / Nos llevamos bien porque...</div>
+<div class="card"><div class="question">¿Dónde te gustaría vivir?</div>→ Me gustaría vivir en... porque...</div>
+<div class="card"><div class="question">¿Qué es importante para ti en una casa?</div>→ Para mí, es importante que sea... y que esté...</div>
+<div class="card"><div class="question">¿Cómo es tu barrio?</div>→ Mi barrio es... / Hay... / No hay... / Lo que más me gusta es...</div>
+<div class="card"><div class="question">Háblame de tu familia.</div>→ En mi familia somos... / Mi madre es... / Me llevo bien con...</div>
+</section>
+<section class="panel" id="describe">
+<h2>🙂 사람 묘사 · 일상 · 옷 · 축제 <span class="new">새 탭</span></h2>
+<div class="card soft">사진 묘사, 친구 소개, 하루 일과 질문에 그대로 쓰이는 재료예요.</div>
+<h3>외모</h3>
+<div class="tbl"><table class="vocab"><tr><th>스페인어</th><th>뜻</th></tr>
+<tr><td>alto/a</td><td>키 큰</td></tr><tr><td>bajo/a</td><td>키 작은</td></tr><tr><td>delgado/a</td><td>마른</td></tr><tr><td>fuerte</td><td>체격이 좋은</td></tr>
+<tr><td>joven</td><td>젊은</td></tr><tr><td>mayor</td><td>나이 든</td></tr><tr><td>de mediana edad</td><td>중년의</td></tr>
+<tr><td>rubio/a</td><td>금발의</td></tr><tr><td>moreno/a</td><td>갈색/검은 머리의</td></tr><tr><td>pelirrojo/a</td><td>빨간 머리의</td></tr>
+<tr><td>tiene el pelo largo</td><td>머리가 길다</td></tr><tr><td>corto</td><td>짧다</td></tr><tr><td>rizado</td><td>곱슬이다</td></tr><tr><td>liso</td><td>생머리다</td></tr>
+<tr><td>tiene los ojos marrones</td><td>눈이 갈색</td></tr><tr><td>azules</td><td>파란색</td></tr><tr><td>negros</td><td>검은색이다</td></tr>
+<tr><td>lleva gafas</td><td>안경을 쓴다</td></tr><tr><td>tiene barba</td><td>턱수염</td></tr><tr><td>tiene bigote</td><td>콧수염이 있다</td></tr>
+</table></div>
+<div class="card yellow"><b>주의:</b> 머리·눈은 <b>tener</b>, 안경·옷은 <b>llevar</b>, 키·체형은 <b>ser</b>. <span class="es">Es alta, tiene el pelo corto y lleva gafas.</span></div>
+<h3>성격</h3>
+<div class="tbl"><table class="vocab"><tr><th>스페인어</th><th>뜻</th></tr>
+<tr><td>simpático/a</td><td>호감 가는</td></tr><tr><td>amable</td><td>친절한</td></tr><tr><td>divertido/a</td><td>재미있는</td></tr><tr><td>abierto/a</td><td>개방적인</td></tr>
+<tr><td>trabajador/a</td><td>성실한</td></tr><tr><td>responsable</td><td>책임감 있는</td></tr><tr><td>paciente</td><td>참을성 있는</td></tr><tr><td>tranquilo/a</td><td>차분한</td></tr>
+<tr><td>tímido/a</td><td>수줍은</td></tr><tr><td>serio/a</td><td>진지한</td></tr><tr><td>nervioso/a</td><td>예민한</td></tr><tr><td>perezoso/a</td><td>게으른</td></tr>
+</table></div>
+<h3>옷</h3>
+<div class="tbl"><table class="vocab"><tr><th>스페인어</th><th>뜻</th></tr>
+<tr><td>la camisa</td><td>셔츠</td></tr><tr><td>la camiseta</td><td>티셔츠</td></tr><tr><td>el jersey</td><td>스웨터</td></tr><tr><td>la chaqueta</td><td>재킷</td></tr><tr><td>el abrigo</td><td>코트</td></tr>
+<tr><td>los pantalones</td><td>바지</td></tr><tr><td>los vaqueros</td><td>청바지</td></tr><tr><td>la falda</td><td>치마</td></tr><tr><td>el vestido</td><td>원피스</td></tr>
+<tr><td>los zapatos</td><td>구두</td></tr><tr><td>las zapatillas</td><td>운동화</td></tr><tr><td>el bolso</td><td>가방</td></tr><tr><td>el gorro</td><td>모자</td></tr>
+</table></div>
+<h3>하루 일과 (재귀동사)</h3>
+<div class="tbl"><table class="vocab"><tr><th>스페인어</th><th>뜻</th></tr>
+<tr><td>me despierto</td><td>깨어나요</td></tr><tr><td>me levanto</td><td>일어나요</td></tr><tr><td>me ducho</td><td>샤워해요</td></tr><tr><td>me visto</td><td>옷을 입어요</td></tr>
+<tr><td>desayuno</td><td>아침 먹어요</td></tr><tr><td>salgo de casa</td><td>집을 나서요</td></tr><tr><td>llego al trabajo</td><td>회사에 도착해요</td></tr>
+<tr><td>como</td><td>점심 먹어요</td></tr><tr><td>vuelvo a casa</td><td>집에 돌아와요</td></tr><tr><td>ceno</td><td>저녁 먹어요</td></tr><tr><td>me acuesto</td><td>잠자리에 들어요</td></tr>
+</table></div>
+<div class="card green"><div class="es">Normalmente me levanto a las siete, me ducho y desayuno. Salgo de casa a las ocho menos cuarto. Por la noche, ceno con mi familia y me acuesto sobre las once.</div><div class="ko">보통 7시에 일어나 샤워하고 아침을 먹어요. 7시 45분에 집을 나서요. 밤에는 가족과 저녁을 먹고 11시쯤 자요.</div></div>
+<div class="card yellow"><b>어제 일과로 바꾸면 (단순과거):</b> me levanté · me duché · desayuné · salí · volví · cené · me acosté</div>
+<h3>축제·기념일</h3>
+<div class="tbl"><table class="vocab"><tr><th>스페인어</th><th>뜻</th></tr>
+<tr><td>el cumpleaños</td><td>생일</td></tr><tr><td>la Navidad</td><td>크리스마스</td></tr><tr><td>el Año Nuevo</td><td>새해</td></tr><tr><td>la boda</td><td>결혼식</td></tr>
+<tr><td>el Chuseok, la fiesta de la cosecha en Corea</td><td>추석, 한국의 수확 축제</td></tr>
+<tr><td>celebrar</td><td>기념하다</td></tr><tr><td>regalar</td><td>선물하다</td></tr><tr><td>felicitar</td><td>축하하다</td></tr><tr><td>reunirse</td><td>모이다</td></tr>
+<tr><td>¡Feliz cumpleaños!</td><td>생일 축하해!</td></tr><tr><td>¡Enhorabuena!</td><td>축하해!</td></tr><tr><td>¡Felices fiestas!</td><td>즐거운 명절 보내!</td></tr>
+</table></div>
+<div class="card soft"><div class="es">En Chuseok toda la familia se reúne en casa de los abuelos. Comemos comida tradicional, como el songpyeon, y visitamos a nuestros antepasados.</div><div class="ko">추석에는 가족 모두 조부모님 댁에 모여요. 송편 같은 전통 음식을 먹고 성묘를 가요.</div></div>
+<h3>예상 질문</h3>
+<div class="card"><span class="question">¿Cómo es tu mejor amigo/a?</span> → Es... / Tiene... / Lleva... / Lo/La conozco desde...</div>
+<div class="card"><span class="question">¿Cómo es un día normal para ti?</span> → Normalmente me levanto a... / Después... / Por la noche...</div>
+<div class="card"><span class="question">¿Qué hiciste ayer?</span> → Ayer me levanté a... / Luego fui a... / Por la noche...</div>
+<div class="card"><span class="question">¿Cuál es tu fiesta favorita? ¿Cómo la celebras?</span> → Mi fiesta favorita es... porque... / Normalmente...</div>
+</section>
+<section class="panel" id="shopping">
+<h2>🛍️ 2. Las compras, la comida y los restaurantes</h2>
+<h3>쇼핑·장보기</h3>
+<div class="tbl"><table class="vocab"><tr><th>단어</th><th>뜻</th></tr>
+<tr><td>la tienda</td><td>가게</td></tr><tr><td>el supermercado</td><td>슈퍼</td></tr><tr><td>el mercado</td><td>시장</td></tr><tr><td>el centro comercial</td><td>쇼핑몰</td></tr>
+<tr><td>la ropa</td><td>옷</td></tr><tr><td>los zapatos</td><td>신발</td></tr><tr><td>el producto</td><td>상품</td></tr>
+<tr><td>el precio</td><td>가격</td></tr><tr><td>la oferta</td><td>행사</td></tr><tr><td>el descuento</td><td>할인</td></tr><tr><td>las rebajas</td><td>세일</td></tr>
+<tr><td>caro/a</td><td>비싼</td></tr><tr><td>barato/a</td><td>저렴한</td></tr><tr><td>de buena calidad</td><td>품질 좋은</td></tr>
+<tr><td>la talla</td><td>(옷) 사이즈</td></tr><tr><td>el número</td><td>(신발) 사이즈</td></tr><tr><td>el probador</td><td>탈의실</td></tr><tr><td>la caja</td><td>계산대</td></tr>
+<tr><td>comprar</td><td>사다</td></tr><tr><td>vender</td><td>팔다</td></tr><tr><td>pagar</td><td>지불하다</td></tr><tr><td>buscar</td><td>찾다</td></tr><tr><td>elegir</td><td>고르다</td></tr><tr><td>probar</td><td>맛보다/입어보다</td></tr>
+<tr><td>devolver</td><td>환불하다</td></tr><tr><td>cambiar</td><td>교환하다</td></tr><tr><td>pagar en efectivo</td><td>현금으로 내다</td></tr><tr><td>pagar con tarjeta</td><td>카드로 내다</td></tr>
+<tr><td>un kilo de</td><td>1킬로</td></tr><tr><td>medio kilo de</td><td>반 킬로</td></tr><tr><td>una docena de</td><td>12개</td></tr><tr><td>una botella de</td><td>한 병</td></tr>
+</table></div>
+<h3>음식·외식</h3>
+<div class="tbl"><table class="vocab"><tr><th>단어</th><th>뜻</th></tr>
+<tr><td>el desayuno</td><td>아침</td></tr><tr><td>la comida</td><td>점심</td></tr><tr><td>la cena</td><td>저녁</td></tr>
+<tr><td>el restaurante</td><td>식당</td></tr><tr><td>el menú del día</td><td>오늘의 메뉴(세트)</td></tr><tr><td>la carta</td><td>메뉴판</td></tr><tr><td>la cuenta</td><td>계산서</td></tr><tr><td>la propina</td><td>팁</td></tr>
+<tr><td>el plato</td><td>요리</td></tr><tr><td>la bebida</td><td>음료</td></tr><tr><td>el postre</td><td>디저트</td></tr><tr><td>de primero</td><td>첫 코스로</td></tr><tr><td>de segundo</td><td>메인으로</td></tr>
+<tr><td>la carne</td><td>고기</td></tr><tr><td>el pescado</td><td>생선</td></tr><tr><td>el pollo</td><td>닭고기</td></tr><tr><td>las verduras</td><td>채소</td></tr><tr><td>la fruta</td><td>과일</td></tr>
+<tr><td>el pan</td><td>빵</td></tr><tr><td>el arroz</td><td>쌀/밥</td></tr><tr><td>los huevos</td><td>달걀</td></tr><tr><td>la leche</td><td>우유</td></tr><tr><td>el queso</td><td>치즈</td></tr>
+<tr><td>rico/a</td><td>맛있는</td></tr><tr><td>delicioso/a</td><td>맛있는</td></tr><tr><td>dulce</td><td>단</td></tr><tr><td>salado/a</td><td>짠</td></tr><tr><td>picante</td><td>매운</td></tr>
+<tr><td>a la plancha</td><td>철판구이</td></tr><tr><td>frito/a</td><td>튀긴</td></tr><tr><td>asado/a</td><td>구운</td></tr><tr><td>al horno</td><td>오븐에 구운</td></tr>
+</table></div>
+<div class="card green"><div class="es">Normalmente hago la compra en el supermercado los fines de semana.</div><div class="ko">보통 주말에 슈퍼에서 장을 봐요.</div></div>
+<div class="card green"><div class="es">Prefiero comprar productos de buena calidad aunque sean un poco más caros.</div><div class="ko">조금 더 비싸더라도 품질 좋은 제품을 사는 것을 선호해요.</div></div>
+<div class="card green"><div class="es">Me gusta comer fuera porque puedo probar platos diferentes.</div><div class="ko">다양한 요리를 먹어볼 수 있어서 외식을 좋아해요.</div></div>
+<div class="card green"><div class="es">Cada vez compro más por internet porque es más cómodo, pero la ropa prefiero probármela antes.</div><div class="ko">편해서 인터넷 쇼핑이 점점 늘지만, 옷은 먼저 입어 보는 게 좋아요.</div></div>
+<div class="card green"><div class="es">Un plato típico de Corea es el bibimbap: es arroz con verduras, carne y un huevo.</div><div class="ko">한국 대표 음식은 비빔밥이에요. 채소, 고기, 달걀을 올린 밥이에요.</div></div>
+<h3>예상 질문</h3>
+<div class="card"><span class="question">¿Dónde haces la compra?</span> → Normalmente compro... / Voy al...</div>
+<div class="card"><span class="question">¿Qué comida te gusta?</span> → Me gusta... porque... / Sobre todo...</div>
+<div class="card"><span class="question">¿Prefieres comer en casa o fuera?</span> → Prefiero... porque...</div>
+<div class="card"><span class="question">En un restaurante, ¿qué haces?</span> → Primero miro la carta. Después pido... Al final...</div>
+<div class="card"><span class="question">¿Compras por internet?</span> → Sí, a menudo... / No mucho, porque...</div>
+<div class="card"><span class="question">¿Cuál es un plato típico de tu país?</span> → Un plato típico es... Lleva... Se come...</div>
+<div class="card yellow"><b>식당 표현:</b> Quisiera... / ¿Cuánto cuesta? / ¿Me puede traer la cuenta, por favor? / Está muy rico. / ¿Tiene...? / Para beber, agua, por favor.</div>
+<div class="card yellow"><b>옷가게 표현:</b> ¿Me lo puedo probar? / ¿Tiene una talla más grande? / ¿Lo tiene en negro? / Me queda pequeño. / Me lo llevo.</div>
+</section>
+<section class="panel" id="health">
+<h2>🏥 3. La salud, la higiene y la alimentación</h2>
+<h3>건강·병원</h3>
+<div class="tbl"><table class="vocab"><tr><th>단어</th><th>뜻</th></tr>
+<tr><td>la salud</td><td>건강</td></tr><tr><td>el médico</td><td>의사</td></tr><tr><td>el hospital</td><td>병원</td></tr><tr><td>la farmacia</td><td>약국</td></tr><tr><td>el centro de salud</td><td>보건소/동네 의원</td></tr>
+<tr><td>la enfermedad</td><td>질병</td></tr><tr><td>el dolor</td><td>통증</td></tr><tr><td>la fiebre</td><td>열</td></tr><tr><td>la tos</td><td>기침</td></tr>
+<tr><td>el resfriado</td><td>감기</td></tr><tr><td>la gripe</td><td>독감</td></tr><tr><td>la alergia</td><td>알레르기</td></tr>
+<tr><td>el medicamento</td><td>약</td></tr><tr><td>la pastilla</td><td>알약</td></tr><tr><td>la receta</td><td>처방전</td></tr><tr><td>la cita</td><td>진료 예약</td></tr>
+<tr><td>estar enfermo/a</td><td>아프다</td></tr><tr><td>sentirse mal</td><td>몸이 안 좋다</td></tr><tr><td>estar cansado/a</td><td>피곤하다</td></tr>
+<tr><td>la cabeza</td><td>머리</td></tr><tr><td>la garganta</td><td>목(구멍)</td></tr><tr><td>el estómago</td><td>배/위</td></tr><tr><td>la espalda</td><td>등</td></tr><tr><td>la pierna</td><td>다리</td></tr><tr><td>el pie</td><td>발</td></tr>
+</table></div>
+<h3>아픈 곳 말하기</h3>
+<div class="card yellow"><b>me duele</b> + 단수: <span class="es">Me duele la cabeza.</span> 머리가 아파요.<br/><b>me duelen</b> + 복수: <span class="es">Me duelen los pies.</span> 발이 아파요.<br/><b>tengo</b> + 증상: <span class="es">Tengo fiebre / tos / un resfriado.</span><br/><span class="small">또는 Tengo dolor de cabeza / de estómago.</span></div>
+<h3>건강 습관</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>hacer ejercicio</td><td>운동하다</td></tr><tr><td>dormir lo suficiente</td><td>충분히 자다</td></tr>
+<tr><td>comer sano</td><td>건강하게 먹다</td></tr><tr><td>llevar una dieta equilibrada</td><td>균형 잡힌 식단을 유지하다</td></tr>
+<tr><td>beber agua</td><td>물을 마시다</td></tr><tr><td>lavarse las manos</td><td>손을 씻다</td></tr>
+<tr><td>ducharse</td><td>샤워하다</td></tr><tr><td>cepillarse los dientes</td><td>양치하다</td></tr>
+<tr><td>evitar el estrés</td><td>스트레스를 피하다</td></tr><tr><td>dejar de fumar</td><td>담배를 끊다</td></tr><tr><td>ir al gimnasio</td><td>헬스장에 가다</td></tr>
+</table></div>
+<h3>조언하기·의사의 말</h3>
+<div class="card"><div class="es">Tienes que descansar. / Deberías ir al médico.</div><div class="ko">쉬어야 해. / 병원에 가 보는 게 좋겠어.</div></div>
+<div class="card"><div class="es">Tome esta pastilla tres veces al día, después de comer.</div><div class="ko">이 약을 하루 세 번 식후에 드세요. (usted 명령형)</div></div>
+<div class="card"><div class="es">Beba mucha agua y no salga de casa unos días.</div><div class="ko">물을 많이 드시고 며칠 외출하지 마세요.</div></div>
+<div class="card soft"><div class="es">Cuando estoy enferma, depende de lo grave que sea. Si no es grave, prefiero descansar en casa.</div><div class="ko">아플 때는 정도에 따라 달라요. 심하지 않으면 집에서 쉬는 것을 선호해요.</div></div>
+<div class="card soft"><div class="es">Creo que es importante llevar una vida saludable: comer bien, dormir lo suficiente y hacer ejercicio.</div><div class="ko">잘 먹고 충분히 자고 운동하는 건강한 생활이 중요하다고 생각해요.</div></div>
+<div class="card soft"><div class="es">Hace unos diez años me torcí el tobillo y estuve una semana sin poder caminar bien.</div><div class="ko">약 10년 전에 발목을 삐어서 일주일 동안 잘 걷지 못했어요.</div></div>
+<h3>예상 질문</h3>
+<div class="card"><span class="question">¿Qué haces cuando estás enfermo/a?</span> → Si no es grave, prefiero... / Si tengo..., voy...</div>
+<div class="card"><span class="question">¿Qué haces para mantenerte sano/a?</span> → Intento... / Suelo... / Es importante...</div>
+<div class="card"><span class="question">¿Qué comida es saludable?</span> → Creo que... / Es importante comer...</div>
+<div class="card"><span class="question">¿Has estado alguna vez en el hospital?</span> → Sí, una vez... / Hace... años estuve...</div>
+<div class="card"><span class="question">¿Qué le recomiendas a una persona con estrés?</span> → Le recomiendo... / Tiene que... / Es mejor...</div>
+</section>
+<section class="panel" id="study">
+<h2>📚 4. Los estudios y la cultura</h2>
+<h3>공부·교육</h3>
+<div class="tbl"><table class="vocab"><tr><th>단어</th><th>뜻</th></tr>
+<tr><td>estudiar</td><td>공부하다</td></tr><tr><td>aprender</td><td>배우다</td></tr><tr><td>practicar</td><td>연습하다</td></tr><tr><td>preparar</td><td>준비하다</td></tr><tr><td>repasar</td><td>복습하다</td></tr>
+<tr><td>la escuela</td><td>학교</td></tr><tr><td>el instituto</td><td>중고등학교</td></tr><tr><td>la universidad</td><td>대학</td></tr><tr><td>la academia</td><td>학원</td></tr>
+<tr><td>la clase</td><td>수업</td></tr><tr><td>el curso</td><td>과정</td></tr><tr><td>el examen</td><td>시험</td></tr><tr><td>los deberes</td><td>숙제</td></tr>
+<tr><td>la asignatura</td><td>과목</td></tr><tr><td>la carrera</td><td>전공(학위과정)</td></tr><tr><td>el título</td><td>학위/자격증</td></tr>
+<tr><td>el profesor</td><td>선생님(남)</td></tr><tr><td>la profesora</td><td>선생님(여)</td></tr><tr><td>el estudiante</td><td>학생</td></tr>
+<tr><td>aprobar</td><td>합격하다</td></tr><tr><td>suspender</td><td>떨어지다</td></tr><tr><td>sacar buenas notas</td><td>좋은 성적을 받다</td></tr>
+</table></div>
+<h3>문화</h3>
+<div class="tbl"><table class="vocab"><tr><th>단어</th><th>뜻</th></tr><tr><td>el museo</td><td>박물관</td></tr><tr><td>el teatro</td><td>극장</td></tr><tr><td>el cine</td><td>영화관</td></tr><tr><td>la exposición</td><td>전시</td></tr><tr><td>el concierto</td><td>콘서트</td></tr><tr><td>la película</td><td>영화</td></tr><tr><td>el libro</td><td>책</td></tr><tr><td>la música</td><td>음악</td></tr><tr><td>el arte</td><td>예술</td></tr><tr><td>la novela</td><td>소설</td></tr><tr><td>leer</td><td>읽다</td></tr><tr><td>ver</td><td>보다</td></tr><tr><td>escuchar</td><td>듣다</td></tr><tr><td>visitar</td><td>방문하다</td></tr>
+<tr><td>de miedo</td><td>공포</td></tr><tr><td>de acción</td><td>액션</td></tr><tr><td>romántica</td><td>로맨스</td></tr><tr><td>de humor</td><td>코미디</td></tr><tr><td>de ciencia ficción</td><td>SF</td></tr></table></div>
+<div class="card green"><div class="es">Estudio español porque me interesa la cultura española y quiero viajar a España.</div><div class="ko">스페인 문화에 관심이 있고 스페인에 여행 가고 싶어서 스페인어를 공부해요.</div></div>
+<div class="card green"><div class="es">En mi tiempo libre me gusta leer y visitar museos.</div><div class="ko">여가 시간에는 책을 읽고 박물관에 가는 것을 좋아해요.</div></div>
+<div class="card green"><div class="es">Llevo un año estudiando español. Lo más difícil para mí son los verbos.</div><div class="ko">스페인어를 1년째 공부하고 있어요. 저에게 가장 어려운 건 동사예요.</div></div>
+<div class="card green"><div class="es">Cuando estaba en el instituto, mi asignatura favorita era el inglés.</div><div class="ko">고등학교 때 제일 좋아한 과목은 영어였어요. (불완료과거)</div></div>
+<h3>예상 질문</h3>
+<div class="card"><span class="question">¿Qué estudias?</span> → Estudio... / Estoy aprendiendo...</div>
+<div class="card"><span class="question">¿Por qué estudias español?</span> → Porque me interesa... / Quiero...</div>
+<div class="card"><span class="question">¿Cómo estudias español?</span> → Voy a una academia... / Veo series... / Uso una aplicación...</div>
+<div class="card"><span class="question">¿Qué tipo de películas/libros te gustan?</span> → Me gustan... porque...</div>
+<div class="card"><span class="question">¿Cuál es la última película que has visto?</span> → La semana pasada vi... / Trata de...</div>
+</section>
+<section class="panel" id="work">
+<h2>💼 5. El trabajo y la vida laboral</h2>
+<div class="tbl"><table class="vocab"><tr><th>단어</th><th>뜻</th></tr>
+<tr><td>el trabajo</td><td>일</td></tr><tr><td>la empresa</td><td>회사</td></tr><tr><td>la oficina</td><td>사무실</td></tr>
+<tr><td>el compañero</td><td>동료(남)</td></tr><tr><td>la compañera</td><td>동료(여)</td></tr><tr><td>el jefe</td><td>상사(남)</td></tr><tr><td>la jefa</td><td>상사(여)</td></tr>
+<tr><td>el proyecto</td><td>프로젝트</td></tr><tr><td>la reunión</td><td>회의</td></tr><tr><td>el horario</td><td>근무시간</td></tr>
+<tr><td>el sueldo</td><td>급여</td></tr><tr><td>las vacaciones</td><td>휴가</td></tr><tr><td>el día libre</td><td>쉬는 날</td></tr>
+<tr><td>la entrevista</td><td>면접</td></tr><tr><td>el currículum</td><td>이력서</td></tr><tr><td>el puesto</td><td>직책</td></tr><tr><td>la experiencia</td><td>경력</td></tr>
+<tr><td>trabajar</td><td>일하다</td></tr><tr><td>empezar</td><td>시작하다</td></tr><tr><td>terminar</td><td>끝내다</td></tr><tr><td>descansar</td><td>쉬다</td></tr>
+<tr><td>buscar trabajo</td><td>구직하다</td></tr><tr><td>teletrabajar</td><td>재택근무하다</td></tr><tr><td>hacer horas extra</td><td>야근하다</td></tr>
+<tr><td>interesante</td><td>흥미로운</td></tr><tr><td>difícil</td><td>어려운</td></tr><tr><td>cansado/a</td><td>피곤한</td></tr><tr><td>estresado/a</td><td>스트레스 받는</td></tr><tr><td>ocupado/a</td><td>바쁜</td></tr>
+</table></div>
+<div class="card"><div class="es">Trabajo en una empresa de electrodomésticos.</div><div class="ko">가전제품 회사에서 일해요.</div></div>
+<div class="card"><div class="es">Trabajo de lunes a viernes y normalmente empiezo a las ocho.</div><div class="ko">월요일부터 금요일까지 일하고 보통 8시에 시작해요.</div></div>
+<div class="card"><div class="es">Mi trabajo es interesante, pero a veces es un poco difícil.</div><div class="ko">제 일은 재미있지만 가끔 조금 어려워요.</div></div>
+<div class="card"><div class="es">Después del trabajo, me gusta descansar y hacer algo tranquilo.</div><div class="ko">퇴근 후에는 쉬거나 조용한 일을 하는 것을 좋아해요.</div></div>
+<div class="card"><div class="es">Lo que más me gusta de mi trabajo es el ambiente; lo que menos, las reuniones largas.</div><div class="ko">제 일에서 가장 좋은 건 분위기이고, 가장 싫은 건 긴 회의예요.</div></div>
+<div class="card"><div class="es">Para mí, un buen trabajo tiene un buen horario y compañeros simpáticos.</div><div class="ko">저에게 좋은 직장은 근무시간이 좋고 동료가 친절한 곳이에요.</div></div>
+<h3>예상 질문</h3>
+<div class="card"><span class="question">¿A qué te dedicas?</span> → Soy... / Trabajo en...</div>
+<div class="card"><span class="question">¿Te gusta tu trabajo?</span> → Sí, porque... / Me gusta, pero a veces...</div>
+<div class="card"><span class="question">¿Qué haces después del trabajo?</span> → Después del trabajo, suelo...</div>
+<div class="card"><span class="question">¿Cómo es un día normal en tu trabajo?</span> → Primero... / Luego tengo reuniones... / Al final...</div>
+<div class="card"><span class="question">¿Cuál fue tu primer trabajo?</span> → Mi primer trabajo fue... / Trabajaba en...</div>
+<div class="card"><span class="question">¿Cómo es el trabajo ideal para ti?</span> → Para mí, el trabajo ideal...</div>
+</section>
+<section class="panel" id="leisure">
+<h2>✈️ 6. El ocio, los viajes y las comunicaciones</h2>
+<h3>여가</h3>
+<div class="tbl"><table class="vocab"><tr><th>단어</th><th>뜻</th></tr>
+<tr><td>el tiempo libre</td><td>자유시간</td></tr><tr><td>el ocio</td><td>여가</td></tr><tr><td>el fin de semana</td><td>주말</td></tr><tr><td>ver películas</td><td>영화 보기</td></tr><tr><td>leer</td><td>독서</td></tr><tr><td>escuchar música</td><td>음악 듣기</td></tr><tr><td>hacer deporte</td><td>운동</td></tr><tr><td>pasear</td><td>산책</td></tr><tr><td>salir con amigos</td><td>친구와 외출</td></tr>
+<tr><td>jugar al fútbol</td><td>축구하다</td></tr><tr><td>nadar</td><td>수영하다</td></tr><tr><td>correr</td><td>달리다</td></tr><tr><td>hacer senderismo</td><td>등산/트레킹하다</td></tr><tr><td>cocinar</td><td>요리하다</td></tr>
+<tr><td>relajarse</td><td>휴식하다</td></tr><tr><td>divertirse</td><td>즐기다</td></tr><tr><td>descansar</td><td>쉬다</td></tr><tr><td>quedar con</td><td>~와 만나다(약속)</td></tr></table></div>
+<h3>여행</h3>
+<div class="tbl"><table class="vocab"><tr><th>단어</th><th>뜻</th></tr>
+<tr><td>viajar</td><td>여행하다</td></tr><tr><td>hacer un viaje</td><td>여행 가다</td></tr><tr><td>reservar</td><td>예약하다</td></tr><tr><td>el viaje</td><td>여행</td></tr><tr><td>el destino</td><td>목적지</td></tr><tr><td>el alojamiento</td><td>숙소</td></tr><tr><td>el hotel</td><td>호텔</td></tr><tr><td>el aeropuerto</td><td>공항</td></tr><tr><td>la estación</td><td>역</td></tr><tr><td>el avión</td><td>비행기</td></tr><tr><td>el tren</td><td>기차</td></tr><tr><td>el autobús</td><td>버스</td></tr><tr><td>visitar</td><td>방문하다</td></tr><tr><td>conocer</td><td>가보다/알게 되다</td></tr><tr><td>sacar fotos</td><td>사진 찍다</td></tr><tr><td>probar</td><td>맛보다</td></tr>
+<tr><td>la maleta</td><td>여행 가방</td></tr><tr><td>el pasaporte</td><td>여권</td></tr><tr><td>el billete</td><td>표</td></tr><tr><td>la habitación doble</td><td>2인실</td></tr>
+<tr><td>la playa</td><td>바다</td></tr><tr><td>la montaña</td><td>산</td></tr><tr><td>el pueblo</td><td>마을</td></tr><tr><td>el monumento</td><td>기념물</td></tr></table></div>
+<div class="card soft"><div class="es">Me gusta viajar porque puedo conocer lugares nuevos y probar comida diferente.</div><div class="ko">새로운 곳을 보고 다른 음식을 먹어볼 수 있어서 여행을 좋아해요.</div></div>
+<div class="card soft"><div class="es">Cuando viajo, prefiero organizar el viaje con antelación.</div><div class="ko">여행할 때는 미리 여행 계획을 세우는 것을 선호해요.</div></div>
+<div class="card soft"><div class="es">El año pasado fui a Japón con mi familia. Visitamos muchos templos y comimos muy bien. Fue un viaje muy bonito.</div><div class="ko">작년에 가족과 일본에 갔어요. 절을 많이 방문하고 맛있게 먹었어요. 아주 좋은 여행이었어요.</div></div>
+<h3>통신</h3>
+<div class="tbl"><table class="vocab"><tr><th>단어</th><th>뜻</th></tr><tr><td>el teléfono móvil</td><td>휴대전화</td></tr><tr><td>el ordenador</td><td>컴퓨터</td></tr><tr><td>Internet</td><td>인터넷</td></tr><tr><td>las redes sociales</td><td>SNS</td></tr><tr><td>la aplicación</td><td>앱</td></tr><tr><td>el mensaje</td><td>메시지</td></tr><tr><td>la llamada</td><td>전화</td></tr><tr><td>el correo electrónico</td><td>이메일</td></tr><tr><td>llamar</td><td>전화하다</td></tr><tr><td>enviar</td><td>보내다</td></tr><tr><td>recibir</td><td>받다</td></tr><tr><td>escribir</td><td>쓰다</td></tr><tr><td>comunicarse</td><td>소통하다</td></tr>
+<tr><td>descargar</td><td>다운로드하다</td></tr><tr><td>conectarse</td><td>접속하다</td></tr><tr><td>la contraseña</td><td>비밀번호</td></tr><tr><td>la batería</td><td>배터리</td></tr></table></div>
+<div class="card"><div class="es">Uso el móvil todos los días para comunicarme con mis amigos y mi familia.</div><div class="ko">친구와 가족과 소통하기 위해 매일 휴대전화를 사용해요.</div></div>
+<div class="card yellow"><b>전화 받기:</b> ¿Diga? / ¿Sí? (여보세요) · ¿Está Ana? — Sí, soy yo. / No, no está. ¿Quiere dejar un mensaje? · Se ha equivocado de número. (잘못 거셨어요)</div>
+<h3>예상 질문</h3><div class="card"><span class="question">¿Qué haces en tu tiempo libre?</span> → En mi tiempo libre, suelo...</div>
+<div class="card"><span class="question">¿Te gusta viajar?</span> → Sí, porque... / Por ejemplo...</div>
+<div class="card"><span class="question">¿Cuál ha sido tu mejor viaje?</span> → Mi mejor viaje fue... / Fui con... / Lo que más me gustó fue...</div>
+<div class="card"><span class="question">¿Qué vas a hacer este fin de semana?</span> → Este fin de semana voy a...</div>
+<div class="card"><span class="question">¿Cómo te comunicas con tus amigos?</span> → Normalmente uso... para...</div>
+<div class="card"><span class="question">¿Crees que usamos demasiado el móvil?</span> → Creo que sí/no, porque...</div>
+</section>
+<section class="panel" id="city">
+<h2>🌦️ 날씨 · 도시 · 교통 <span class="new">새 탭</span></h2>
+<h3>날씨·계절</h3>
+<div class="tbl"><table class="vocab"><tr><th>스페인어</th><th>뜻</th></tr>
+<tr><td>hace calor</td><td>덥다</td></tr><tr><td>hace frío</td><td>춥다</td></tr><tr><td>hace sol</td><td>해가 났다</td></tr><tr><td>hace viento</td><td>바람이 분다</td></tr>
+<tr><td>hace buen tiempo</td><td>날씨가 좋다</td></tr><tr><td>hace mal tiempo</td><td>날씨가 나쁘다</td></tr>
+<tr><td>llueve</td><td>비가 온다</td></tr><tr><td>nieva</td><td>눈이 온다</td></tr><tr><td>está nublado</td><td>흐리다</td></tr><tr><td>hay niebla</td><td>안개가 꼈다</td></tr>
+<tr><td>la primavera</td><td>봄</td></tr><tr><td>el verano</td><td>여름</td></tr><tr><td>el otoño</td><td>가을</td></tr><tr><td>el invierno</td><td>겨울</td></tr>
+<tr><td>la temperatura</td><td>기온</td></tr><tr><td>grados</td><td>도</td></tr><tr><td>el clima</td><td>기후</td></tr><tr><td>húmedo/a</td><td>습한</td></tr><tr><td>seco/a</td><td>건조한</td></tr>
+</table></div>
+<div class="card yellow"><b>주의:</b> 날씨는 <b>hacer</b> (hace calor), "흐리다"는 <b>estar</b> (está nublado), 비·눈은 동사 자체 (llueve, nieva). 과거 배경은 불완료과거: <span class="es">Hacía mucho frío y llovía.</span></div>
+<div class="card green"><div class="es">En Corea hay cuatro estaciones. En verano hace mucho calor y llueve mucho; en invierno hace frío y a veces nieva. Mi estación favorita es el otoño porque hace buen tiempo.</div><div class="ko">한국은 사계절이 있어요. 여름은 아주 덥고 비가 많이 오고, 겨울은 춥고 가끔 눈이 와요. 제가 좋아하는 계절은 가을이에요. 날씨가 좋거든요.</div></div>
+<h3>도시·장소</h3>
+<div class="tbl"><table class="vocab"><tr><th>스페인어</th><th>뜻</th></tr>
+<tr><td>el centro</td><td>시내</td></tr><tr><td>la calle</td><td>거리</td></tr><tr><td>la plaza</td><td>광장</td></tr><tr><td>el parque</td><td>공원</td></tr>
+<tr><td>el ayuntamiento</td><td>시청</td></tr><tr><td>el banco</td><td>은행</td></tr><tr><td>correos</td><td>우체국</td></tr><tr><td>la comisaría</td><td>경찰서</td></tr>
+<tr><td>la biblioteca</td><td>도서관</td></tr><tr><td>el polideportivo</td><td>체육관</td></tr><tr><td>la iglesia</td><td>성당</td></tr><tr><td>el puente</td><td>다리</td></tr>
+<tr><td>grande</td><td>큰</td></tr><tr><td>pequeño/a</td><td>작은</td></tr><tr><td>moderno/a</td><td>현대적인</td></tr><tr><td>antiguo/a</td><td>오래된</td></tr><tr><td>bonito/a</td><td>예쁜</td></tr><tr><td>sucio/a</td><td>더러운</td></tr><tr><td>limpio/a</td><td>깨끗한</td></tr>
+</table></div>
+<h3>길 묻기·안내</h3>
+<div class="card"><div class="es">Perdone, ¿dónde está la estación? / ¿Hay una farmacia por aquí?</div><div class="ko">실례합니다, 역이 어디예요? / 이 근처에 약국 있어요?</div></div>
+<div class="card"><div class="es">Siga todo recto y gire a la derecha en la segunda calle.</div><div class="ko">쭉 직진하다가 두 번째 길에서 오른쪽으로 도세요.</div></div>
+<div class="card"><div class="es">Está a cinco minutos andando, al lado del banco.</div><div class="ko">걸어서 5분 거리, 은행 옆이에요.</div></div>
+<div class="card"><div class="es">Cruce la plaza y está enfrente.</div><div class="ko">광장을 건너면 맞은편에 있어요.</div></div>
+<h3>교통</h3>
+<div class="tbl"><table class="vocab"><tr><th>스페인어</th><th>뜻</th></tr>
+<tr><td>ir en coche</td><td>차로</td></tr><tr><td>en metro</td><td>지하철로</td></tr><tr><td>en autobús</td><td>버스로</td></tr><tr><td>en bici</td><td>자전거로</td></tr><tr><td>a pie</td><td>걸어서</td></tr>
+<tr><td>coger el metro</td><td>지하철을 타다</td></tr><tr><td>bajarse en</td><td>~에서 내리다</td></tr><tr><td>hacer transbordo</td><td>환승하다</td></tr>
+<tr><td>el billete sencillo</td><td>편도표</td></tr><tr><td>de ida y vuelta</td><td>왕복표</td></tr><tr><td>el abono</td><td>정기권</td></tr>
+<tr><td>tardar (Tardo media hora.)</td><td>시간이 걸리다(30분 걸려요)</td></tr><tr><td>el atasco</td><td>교통체증</td></tr><tr><td>la parada</td><td>정류장</td></tr>
+</table></div>
+<div class="card green"><div class="es">Voy al trabajo en metro. Tardo unos cuarenta minutos y tengo que hacer un transbordo.</div><div class="ko">지하철로 출근해요. 40분쯤 걸리고 한 번 갈아타야 해요.</div></div>
+<h3>예상 질문</h3>
+<div class="card"><span class="question">¿Qué tiempo hace en tu ciudad?</span> → En verano hace... / En invierno...</div>
+<div class="card"><span class="question">¿Qué estación prefieres? ¿Por qué?</span> → Prefiero... porque...</div>
+<div class="card"><span class="question">¿Cómo es tu ciudad?</span> → Mi ciudad es... / Hay... / Lo mejor es...</div>
+<div class="card"><span class="question">¿Cómo vas al trabajo?</span> → Voy en... / Tardo...</div>
+<div class="card"><span class="question">¿Prefieres vivir en una ciudad grande o en un pueblo?</span> → Prefiero... porque... / Sin embargo...</div>
+</section>
+<section class="panel" id="tense">
+<h2>⏰ 7. 스페인어 동사 시제 — A2 완전 정리</h2>
+<div class="formula"><b>핵심:</b> "언제 일어난 일인가?"를 먼저 생각하세요.<br/>
+지금/평소 → 현재 · 지금까지의 경험 → 현재완료 · 끝난 과거 → 단순과거 · 과거의 배경/반복 → 불완료과거 · 미래 계획 → ir a + 동사</div>
+<h3>① 현재 — Presente</h3>
+<div class="card"><b>언제?</b> 지금의 사실 / 평소 습관 / 현재 상태</div>
+<div class="tbl"><table class="conj"><tr><th></th><th>hablar</th><th>comer</th><th>vivir</th></tr>
+<tr><td>yo</td><td>hablo</td><td>como</td><td>vivo</td></tr>
+<tr><td>tú</td><td>hablas</td><td>comes</td><td>vives</td></tr>
+<tr><td>él · ella · Ud.</td><td>habla</td><td>come</td><td>vive</td></tr>
+<tr><td>nosotros</td><td>hablamos</td><td>comemos</td><td>vivimos</td></tr>
+<tr><td>vosotros</td><td>habláis</td><td>coméis</td><td>vivís</td></tr>
+<tr><td>ellos · Uds.</td><td>hablan</td><td>comen</td><td>viven</td></tr></table></div>
+<div class="card yellow"><b>어간 변화 동사</b> (nosotros·vosotros는 변하지 않음)<br/>
+<b>e → ie:</b> querer → quiero · empezar → empiezo · preferir → prefiero · pensar → pienso · cerrar → cierro<br/>
+<b>o → ue:</b> poder → puedo · dormir → duermo · volver → vuelvo · costar → cuesta · jugar → juego<br/>
+<b>e → i:</b> pedir → pido · repetir → repito · servir → sirvo<br/>
+<b>1인칭만 불규칙:</b> hacer → hago · salir → salgo · poner → pongo · conocer → conozco · saber → sé · dar → doy</div>
+<div class="card green"><div class="es">Trabajo en una empresa de electrodomésticos.</div><div class="ko">가전제품 회사에서 일해요.</div><div class="es">Normalmente estudio español después del trabajo.</div><div class="ko">보통 퇴근 후 스페인어를 공부해요.</div></div>
+<h3>② 현재완료 — Pretérito perfecto</h3>
+<div class="card"><b>형태:</b> <b>haber + 과거분사</b> → he · has · ha · hemos · habéis · han + hablado / comido / vivido</div>
+<div class="card"><b>언제?</b> 과거의 경험을 현재와 연결해서 말할 때 · "~해 본 적 있다" · 오늘/이번 주처럼 아직 끝나지 않은 시간 안의 일</div>
+<div class="card"><b>자주 같이 쓰는 말:</b> hoy, esta mañana, esta semana, este año, alguna vez, nunca, ya, todavía no, últimamente</div>
+<div class="card yellow"><b>불규칙 과거분사:</b> hacer → hecho · decir → dicho · ver → visto · escribir → escrito · abrir → abierto · volver → vuelto · poner → puesto · romper → roto · morir → muerto</div>
+<div class="card green"><div class="es">He estado en España una vez.</div><div class="ko">스페인에 한 번 가 본 적이 있어요.</div><div class="es">Nunca he probado ese plato.</div><div class="ko">그 요리를 먹어본 적이 없어요.</div><div class="es">Esta semana he trabajado mucho.</div><div class="ko">이번 주에 일을 많이 했어요.</div></div>
+<div class="card yellow"><b>암기:</b> "경험" 질문 → <b>¿Has + 과거분사...?</b> → <b>Sí, he...</b> / <b>No, nunca he...</b></div>
+<h3>③ 단순과거 — Pretérito indefinido</h3>
+<div class="card"><b>언제?</b> 끝난 특정 과거 사건. "어제/작년/10년 전"처럼 시점이 분명할 때</div>
+<div class="card"><b>자주 같이 쓰는 말:</b> ayer, anteayer, anoche, la semana pasada, el año pasado, hace diez años, en 2024, el lunes</div>
+<div class="tbl"><table class="conj"><tr><th></th><th>hablar</th><th>comer</th><th>vivir</th></tr>
+<tr><td>yo</td><td>hablé</td><td>comí</td><td>viví</td></tr>
+<tr><td>tú</td><td>hablaste</td><td>comiste</td><td>viviste</td></tr>
+<tr><td>él · ella · Ud.</td><td>habló</td><td>comió</td><td>vivió</td></tr>
+<tr><td>nosotros</td><td>hablamos</td><td>comimos</td><td>vivimos</td></tr>
+<tr><td>vosotros</td><td>hablasteis</td><td>comisteis</td><td>vivisteis</td></tr>
+<tr><td>ellos · Uds.</td><td>hablaron</td><td>comieron</td><td>vivieron</td></tr></table></div>
+<div class="card yellow"><b>강변화 과거 (악센트 없음!):</b> tener → tuve · estar → estuve · poder → pude · poner → puse · saber → supe · querer → quise · venir → vine · hacer → hice (él <b>hizo</b>) · decir → dije (ellos <b>dijeron</b>)<br/>
+어미: <b>-e, -iste, -o, -imos, -isteis, -ieron</b> → tuve, tuviste, tuvo, tuvimos, tuvisteis, tuvieron<br/>
+<b>ser / ir</b> (같은 형태): fui, fuiste, fue, fuimos, fuisteis, fueron<br/>
+<b>3인칭 변화:</b> dormir → durmió · pedir → pidió · leer → leyó<br/>
+<b>철자 변화 (yo):</b> buscar → busqué · llegar → llegué · jugar → jugué · empezar → empecé</div>
+<div class="card green"><div class="es">El año pasado viajé a España.</div><div class="ko">작년에 스페인에 여행 갔어요.</div><div class="es">Hace unos diez años me torcí el tobillo.</div><div class="ko">약 10년 전에 발목을 삐었어요.</div></div>
+<div class="card yellow"><b>핵심 구별:</b> <b>He viajado a España.</b> = 스페인에 가 본 적 있어요. / <b>Viajé a España el año pasado.</b> = 작년에 스페인에 갔어요.</div>
+<h3>④ 불완료과거 — Pretérito imperfecto</h3>
+<div class="card"><b>언제?</b> 과거의 반복 습관 / 과거의 상태·배경(날씨, 나이, 묘사) / "~하곤 했다"</div>
+<div class="card"><b>자주 같이 쓰는 말:</b> antes, cuando era pequeña, siempre, normalmente, de niña, todos los veranos, mientras</div>
+<div class="tbl"><table class="conj"><tr><th></th><th>hablar</th><th>comer</th><th>vivir</th></tr><tr><td>yo</td><td>hablaba</td><td>comía</td><td>vivía</td></tr><tr><td>tú</td><td>hablabas</td><td>comías</td><td>vivías</td></tr><tr><td>él · ella · Ud.</td><td>hablaba</td><td>comía</td><td>vivía</td></tr><tr><td>nosotros</td><td>hablábamos</td><td>comíamos</td><td>vivíamos</td></tr><tr><td>vosotros</td><td>hablabais</td><td>comíais</td><td>vivíais</td></tr><tr><td>ellos · Uds.</td><td>hablaban</td><td>comían</td><td>vivían</td></tr></table></div><div class="small">불규칙 3개: ser · ir · ver</div><div class="tbl"><table class="conj"><tr><th></th><th>ser</th><th>ir</th><th>ver</th></tr><tr><td>yo</td><td>era</td><td>iba</td><td>veía</td></tr><tr><td>tú</td><td>eras</td><td>ibas</td><td>veías</td></tr><tr><td>él · ella · Ud.</td><td>era</td><td>iba</td><td>veía</td></tr><tr><td>nosotros</td><td>éramos</td><td>íbamos</td><td>veíamos</td></tr><tr><td>vosotros</td><td>erais</td><td>ibais</td><td>veíais</td></tr><tr><td>ellos · Uds.</td><td>eran</td><td>iban</td><td>veían</td></tr></table></div>
+<div class="card small">불규칙은 ser · ir · ver 딱 3개뿐! 나머지는 모두 규칙.</div>
+<div class="card green"><div class="es">Cuando era pequeña, jugaba con mis amigas todos los días.</div><div class="ko">어렸을 때 매일 친구들과 놀곤 했어요.</div><div class="es">Cuando vivía en Daegu, iba mucho a ese restaurante.</div><div class="ko">대구에 살 때 그 식당에 자주 갔어요.</div></div>
+<h3>⑤ 과거 두 시제 비교 — indefinido vs imperfecto</h3>
+<div class="tbl"><table><tr><th>단순과거</th><th>불완료과거</th></tr>
+<tr><td>끝난 사건<br/>"무슨 일이 일어났나?"</td><td>배경·습관<br/>"그때 어떤 상태였나 / 무엇을 하곤 했나?"</td></tr>
+<tr><td>Un día fui al hospital.</td><td>Cuando era pequeña, iba al hospital a menudo.</td></tr>
+<tr><td>어느 날 병원에 갔다.</td><td>어렸을 때 병원에 자주 갔다.</td></tr>
+</table></div>
+<div class="card soft"><b>한 문장에 함께:</b> 배경(불완료) + 끼어든 사건(단순)<br/><span class="es">Estaba en casa cuando me llamó mi madre.</span><br/><span class="ko">집에 있었는데 엄마가 전화했어요.</span><br/><span class="es">Mientras cenábamos, empezó a llover.</span><br/><span class="ko">저녁을 먹는 동안 비가 오기 시작했어요.</span></div>
+<h3>⑥ 가까운 미래 — ir a + 동사원형</h3>
+<div class="card"><b>형태:</b> voy a / vas a / va a / vamos a / vais a / van a + 동사원형</div>
+<div class="card green"><div class="es">Este fin de semana voy a estudiar español.</div><div class="ko">이번 주말에 스페인어를 공부할 거예요.</div></div>
+<div class="card green"><div class="es">Voy a viajar con mis amigos el próximo mes.</div><div class="ko">다음 달에 친구들과 여행할 거예요.</div></div>
+<div class="card"><b>단순미래 (알아두면 독해·듣기에 도움):</b> 원형 + -é, -ás, -á, -emos, -éis, -án → viajaré, comeré<br/>
+불규칙: tendré · haré · podré · saldré · vendré · diré · querré · sabré · pondré<br/>
+<span class="es">Mañana lloverá en el norte.</span> <span class="ko">내일 북부에 비가 올 거예요. (일기예보에 자주 나옴)</span></div>
+<h3>⑦ 현재진행 — estar + gerundio</h3>
+<div class="card"><b>언제?</b> 바로 지금 하고 있는 행동 · 사진 묘사의 핵심!</div>
+<div class="card"><b>만드는 법:</b> -ar → <b>-ando</b> (hablando) · -er/-ir → <b>-iendo</b> (comiendo, viviendo)<br/>불규칙: leer → leyendo · dormir → durmiendo · pedir → pidiendo · decir → diciendo · ir → yendo</div>
+<div class="card green"><div class="es">Estoy estudiando español.</div><div class="ko">지금 스페인어를 공부하고 있어요.</div><div class="es">En la foto, dos chicos están jugando al fútbol.</div><div class="ko">사진에서 두 남자아이가 축구를 하고 있어요.</div></div>
+<h3>⑧ 조건형 — 정중함과 바람 표현</h3>
+<div class="card"><b>me gustaría</b> ~하고 싶어요 · <b>podría</b> ~할 수 있을 거예요/~해 주실 수 있나요 · <b>debería</b> ~하는 게 좋겠어요<br/>
+<span class="es">Me gustaría vivir cerca del mar.</span> · <span class="es">¿Podría ayudarme?</span> · <span class="es">Deberías descansar más.</span></div>
+<h3>⑨ A2 핵심 불규칙 동사</h3>
+<div class="tbl"><table class="conj"><tr><th>동사</th><th>현재 yo</th><th>과거 yo</th><th>과거분사</th></tr>
+<tr><td><b>ser</b><span class="sub">~이다</span></td><td>soy</td><td>fui</td><td>sido</td></tr>
+<tr><td><b>estar</b><span class="sub">~있다/상태</span></td><td>estoy</td><td>estuve</td><td>estado</td></tr>
+<tr><td><b>ir</b><span class="sub">가다</span></td><td>voy</td><td>fui</td><td>ido</td></tr>
+<tr><td><b>tener</b><span class="sub">가지다</span></td><td>tengo</td><td>tuve</td><td>tenido</td></tr>
+<tr><td><b>hacer</b><span class="sub">하다/만들다</span></td><td>hago</td><td>hice</td><td>hecho</td></tr>
+<tr><td><b>poder</b><span class="sub">할 수 있다</span></td><td>puedo</td><td>pude</td><td>podido</td></tr>
+<tr><td><b>querer</b><span class="sub">원하다</span></td><td>quiero</td><td>quise</td><td>querido</td></tr>
+<tr><td><b>venir</b><span class="sub">오다</span></td><td>vengo</td><td>vine</td><td>venido</td></tr>
+<tr><td><b>decir</b><span class="sub">말하다</span></td><td>digo</td><td>dije</td><td>dicho</td></tr>
+<tr><td><b>ver</b><span class="sub">보다</span></td><td>veo</td><td>vi</td><td>visto</td></tr>
+<tr><td><b>dar</b><span class="sub">주다</span></td><td>doy</td><td>di</td><td>dado</td></tr>
+<tr><td><b>saber</b><span class="sub">알다</span></td><td>sé</td><td>supe</td><td>sabido</td></tr>
+<tr><td><b>poner</b><span class="sub">놓다</span></td><td>pongo</td><td>puse</td><td>puesto</td></tr>
+<tr><td><b>salir</b><span class="sub">나가다</span></td><td>salgo</td><td>salí</td><td>salido</td></tr>
+<tr><td><b>traer</b><span class="sub">가져오다</span></td><td>traigo</td><td>traje</td><td>traído</td></tr>
+<tr><td><b>conocer</b><span class="sub">알다(사람·장소)</span></td><td>conozco</td><td>conocí</td><td>conocido</td></tr>
+<tr><td><b>dormir</b><span class="sub">자다</span></td><td>duermo</td><td>dormí<span class="sub">él durmió</span></td><td>dormido</td></tr>
+<tr><td><b>pedir</b><span class="sub">주문하다/부탁하다</span></td><td>pido</td><td>pedí<span class="sub">él pidió</span></td><td>pedido</td></tr>
+<tr><td><b>volver</b><span class="sub">돌아오다</span></td><td>vuelvo</td><td>volví</td><td>vuelto</td></tr>
+<tr><td><b>escribir</b><span class="sub">쓰다</span></td><td>escribo</td><td>escribí</td><td>escrito</td></tr>
+</table></div>
+<h3>🧠 시제 선택 치트키</h3>
+<div class="grid">
+<div class="tbox"><b>"평소에?"</b><br/>→ 현재<br/><span class="ok">Normalmente trabajo.</span></div>
+<div class="tbox"><b>"~해 본 적? / 오늘·이번 주?"</b><br/>→ 현재완료<br/><span class="ok">He viajado.</span></div>
+<div class="tbox"><b>"어제/작년/10년 전?"</b><br/>→ 단순과거<br/><span class="ok">Viajé el año pasado.</span></div>
+<div class="tbox"><b>"어렸을 때/곤 했다/배경?"</b><br/>→ 불완료과거<br/><span class="ok">Jugaba mucho.</span></div>
+<div class="tbox"><b>"~할 예정?"</b><br/>→ ir a + 동사<br/><span class="ok">Voy a viajar.</span></div>
+<div class="tbox"><b>"지금 ~하는 중?"</b><br/>→ estar + gerundio<br/><span class="ok">Estoy estudiando.</span></div>
+</div>
+<h3>🔥 자주 헷갈리는 estuve / he estado</h3>
+<div class="card yellow"><b>He estado en un hospital.</b><br/>→ 병원에 있어 본 적이 있다 / 경험을 말함.</div>
+<div class="card yellow"><b>Estuve en un hospital hace diez años.</b><br/>→ 10년 전에 병원에 있었다 / 특정하게 끝난 과거 사건.</div>
+<div class="card"><b>시험에서는 시간 표현을 먼저 찾기!</b><br/>
+<b>hace diez años / el año pasado / ayer</b> → 단순과거 가능성이 매우 높음<br/>
+<b>alguna vez / nunca / ya / esta semana</b> → 현재완료가 자연스러움<br/>
+<span class="small">참고: 중남미에서는 "esta mañana"에도 단순과거를 많이 써요. 시험에서는 둘 다 이해하되, 말할 땐 스페인식(현재완료)이 안전해요.</span></div>
+<h3>🎯 과거 경험 답변 공식</h3>
+<div class="formula"><b>경험:</b> Sí, he + 과거분사 → 언제/어떤 경험인지 → 느낌<br/><br/>
+<b>특정 사건:</b> 시간 표현 + 단순과거 → 무엇을 했는지 → 결과/느낌 (Fue + 형용사)<br/><br/>
+<b>어린 시절:</b> Cuando era pequeña + 불완료과거 → 반복했던 행동</div>
+</section>
+<section class="panel" id="grammar">
+<h2>🧩 A2 핵심 문법 <span class="new">새 탭</span></h2>
+<h3>① ser · estar · hay</h3>
+<div class="tbl"><table class="stack"><tr><th></th><th>언제</th><th>예문</th></tr>
+<tr><td><b>ser</b></td><td data-label="언제">정체·직업·국적·성격·재료·시간</td><td data-label="예문">Soy coreana. · Es simpática. · Son las tres.</td></tr>
+<tr><td><b>estar</b></td><td data-label="언제">위치·일시적 상태·감정</td><td data-label="예문">Estoy cansada. · El banco está en la plaza.</td></tr>
+<tr><td><b>hay</b></td><td data-label="언제">존재 (불특정한 것)</td><td data-label="예문">Hay un parque cerca. · No hay ascensor.</td></tr>
+</table></div>
+<div class="card yellow"><b>Hay</b> un supermercado en mi calle. (어떤 슈퍼가 있다) ↔ <b>El</b> supermercado <b>está</b> en mi calle. (그 슈퍼는 우리 길에 있다)</div>
+<h3>② gustar형 동사</h3>
+<div class="card"><b>me / te / le / nos / os / les</b> + gusta(단수·동사원형) / gustan(복수)<br/>
+<span class="es">Me gusta el café.</span> · <span class="es">Me gustan los perros.</span> · <span class="es">Me gusta viajar.</span><br/>
+같은 형태: <b>encantar</b> 정말 좋아하다 · <b>interesar</b> 관심 있다 · <b>doler</b> 아프다 · <b>parecer</b> ~처럼 보이다 · <b>molestar</b> 거슬리다</div>
+<div class="tbl"><table class="stack"><tr><th>상대가</th><th>나도 같으면</th><th>나는 다르면</th></tr>
+<tr><td data-label="상대가">Me gusta el cine.</td><td data-label="나도 같으면">A mí también.</td><td data-label="나는 다르면">A mí no.</td></tr>
+<tr><td data-label="상대가">No me gusta el cine.</td><td data-label="나도 같으면">A mí tampoco.</td><td data-label="나는 다르면">A mí sí.</td></tr></table></div>
+<h3>③ 비교 표현</h3>
+<div class="card"><b>más</b> + 형용사 + <b>que</b> ~보다 더 · <b>menos</b> ... <b>que</b> ~보다 덜 · <b>tan</b> ... <b>como</b> ~만큼 · <b>tanto/a(s)</b> + 명사 + <b>como</b><br/>
+불규칙: <b>mejor</b> 더 좋은 · <b>peor</b> 더 나쁜 · <b>mayor</b> 나이 많은 · <b>menor</b> 나이 어린<br/>
+최상급: <b>el/la más</b> ... <b>de</b> → <span class="es">Seúl es la ciudad más grande de Corea.</span></div>
+<div class="card soft"><div class="es">Vivir en el centro es más caro que vivir en las afueras, pero es más cómodo.</div><div class="ko">시내에 사는 게 외곽보다 비싸지만 더 편해요.</div></div>
+<h3>④ 목적격 대명사</h3>
+<div class="tbl"><table><tr><th>직접목적 (~을)</th><th>간접목적 (~에게)</th></tr>
+<tr><td>me · te · lo/la · nos · os · los/las</td><td>me · te · le · nos · os · les</td></tr></table></div>
+<div class="card">위치: 활용된 동사 <b>앞</b> → <span class="es">Lo compré ayer.</span> / 원형·진행형 <b>뒤에 붙여도</b> OK → <span class="es">Voy a comprarlo.</span> = <span class="es">Lo voy a comprar.</span><br/>
+둘이 함께: le/les + lo → <b>se lo</b> → <span class="es">Se lo di a mi madre.</span> 그걸 엄마에게 줬어요.</div>
+<h3>⑤ 명령형 (길 안내·조언·레시피·의사)</h3>
+<div class="tbl"><table class="stack"><tr><th>동사</th><th>tú (긍정)</th><th>usted</th></tr>
+<tr><td data-label="동사">hablar</td><td data-label="tú (긍정)">habla</td><td data-label="usted">hable</td></tr>
+<tr><td data-label="동사">comer</td><td data-label="tú (긍정)">come</td><td data-label="usted">coma</td></tr>
+<tr><td data-label="동사">escribir</td><td data-label="tú (긍정)">escribe</td><td data-label="usted">escriba</td></tr>
+<tr><td data-label="동사">girar · seguir · tomar</td><td data-label="tú (긍정)">gira · sigue · toma</td><td data-label="usted">gire · siga · tome</td></tr>
+<tr><td data-label="동사">venir · tener · hacer · poner</td><td data-label="tú (긍정)">ven · ten · haz · pon</td><td data-label="usted">venga · tenga · haga · ponga</td></tr>
+<tr><td data-label="동사">salir · decir · ir</td><td data-label="tú (긍정)">sal · di · ve</td><td data-label="usted">salga · diga · vaya</td></tr></table></div>
+<div class="card small">부정 명령은 usted 형태에 기반: no hable / (tú) no hables · no comas · no vayas</div>
+<h3>⑥ 꼭 아는 동사구 (perífrasis)</h3>
+<div class="tbl"><table class="stack"><tr><th>표현</th><th>뜻</th><th>예문</th></tr>
+<tr><td data-label="표현">tener que + 원형</td><td data-label="뜻">~해야 한다</td><td data-label="예문">Tengo que trabajar el sábado.</td></tr>
+<tr><td data-label="표현">hay que + 원형</td><td data-label="뜻">(일반적으로) ~해야 한다</td><td data-label="예문">Hay que reservar antes.</td></tr>
+<tr><td data-label="표현">poder / querer + 원형</td><td data-label="뜻">~할 수 있다 / 하고 싶다</td><td data-label="예문">¿Puedo pagar con tarjeta?</td></tr>
+<tr><td data-label="표현">soler + 원형</td><td data-label="뜻">보통 ~하다</td><td data-label="예문">Suelo correr por la mañana.</td></tr>
+<tr><td data-label="표현">acabar de + 원형</td><td data-label="뜻">방금 ~했다</td><td data-label="예문">Acabo de llegar.</td></tr>
+<tr><td data-label="표현">empezar a + 원형</td><td data-label="뜻">~하기 시작하다</td><td data-label="예문">Empecé a estudiar español en 2025.</td></tr>
+<tr><td data-label="표현">dejar de + 원형</td><td data-label="뜻">~을 그만두다</td><td data-label="예문">Dejé de fumar.</td></tr>
+<tr><td data-label="표현">volver a + 원형</td><td data-label="뜻">다시 ~하다</td><td data-label="예문">Quiero volver a visitar Madrid.</td></tr>
+<tr><td data-label="표현">llevar + 기간 + gerundio</td><td data-label="뜻">~째 ~하고 있다</td><td data-label="예문">Llevo un año estudiando español.</td></tr>
+</table></div>
+<h3>⑦ por vs para</h3>
+<div class="tbl"><table><tr><th>para (목적·대상·기한·방향)</th><th>por (이유·경로·시간대·수단·교환)</th></tr>
+<tr><td>Estudio <b>para</b> aprobar el examen.</td><td>Gracias <b>por</b> tu ayuda.</td></tr>
+<tr><td>Este regalo es <b>para</b> ti.</td><td>Paseo <b>por</b> el parque.</td></tr>
+<tr><td>Es <b>para</b> el viernes.</td><td><b>Por</b> la mañana trabajo.</td></tr>
+<tr><td>Salgo <b>para</b> Madrid.</td><td>Hablamos <b>por</b> teléfono.</td></tr>
+</table></div>
+<h3>⑧ 자주 틀리는 것</h3>
+<div class="grid">
+<div class="card"><b>muy vs mucho</b><br/>muy + 형용사/부사: muy bonito<br/>mucho + 명사/동사 뒤: mucha gente, trabajo mucho</div>
+<div class="card"><b>bueno vs bien</b><br/>bueno(형용사): un buen libro<br/>bien(부사): Hablas bien.</div>
+<div class="card"><b>saber vs conocer</b><br/>saber: 정보·능력 (Sé nadar.)<br/>conocer: 사람·장소 (Conozco Madrid.)</div>
+<div class="card"><b>사람 목적어 앞 a</b><br/>Visito <b>a</b> mis abuelos.<br/>Visito Toledo.</div>
+<div class="card"><b>성·수 일치</b><br/>la casa blanc<b>a</b> · los coches roj<b>os</b><br/>예외: el problema, el día, la mano</div>
+<div class="card"><b>의문사 악센트</b><br/>qué · cuál · quién · dónde · cuándo · cómo · cuánto · por qué<br/>(대답 porque는 붙여 쓰고 악센트 없음)</div>
+</div>
+</section>
+<section class="panel" id="questions">
+<h2>❓ 스페인어로 질문 만들기</h2>
+<div class="formula"><b>질문 공식:</b> ¿ + (전치사) + 의문사 + 동사 + (주어) + 나머지 ?<br/>
+¿<b>Con quién</b> <b>vives</b>? · ¿<b>Dónde</b> <b>trabaja</b> tu hermana? · ¿<b>A qué hora</b> <b>empieza</b> la clase?</div>
+<h3>① 예/아니요 질문 — 억양만 올리면 끝</h3>
+<div class="card"><div class="es">Tienes hermanos. → ¿Tienes hermanos? ↗</div><div class="ko">형제가 있어. → 형제 있어?</div></div>
+<div class="card"><div class="es">¿Te gusta el café? / ¿Has estado en España?</div><div class="ko">커피 좋아해? / 스페인에 가 본 적 있어?</div></div>
+<div class="card"><div class="es">Hace frío, ¿verdad? / Vienes mañana, ¿no?</div><div class="ko">춥다, 그렇지? / 내일 오지, 응? (확인 질문)</div></div>
+<h3>② 의문사별 정리</h3>
+<div class="card soft"><b>qué</b> — 무엇, 어떤<br/>
+<span class="es">¿Qué haces los fines de semana?</span><br/><span class="ko">주말에 뭐 해?</span><br/>
+<span class="es">¿Qué tipo de música te gusta?</span><br/><span class="ko">어떤 음악 좋아해?</span><br/>
+<span class="es">¿A qué te dedicas?</span><br/><span class="ko">무슨 일 하세요?</span></div>
+<div class="card soft"><b>cuál / cuáles</b> — 어느 것, 무엇 (여러 개 중 선택)<br/>
+<span class="es">¿Cuál es tu comida favorita?</span><br/><span class="ko">제일 좋아하는 음식이 뭐야?</span><br/>
+<span class="es">¿Cuál prefieres, el rojo o el azul?</span><br/><span class="ko">빨간 것과 파란 것 중 어느 게 좋아?</span></div>
+<div class="card soft"><b>quién / quiénes</b> — 누구<br/>
+<span class="es">¿Quién es esa chica?</span><br/><span class="ko">저 여자는 누구야?</span><br/>
+<span class="es">¿Con quién vives?</span><br/><span class="ko">누구랑 살아?</span></div>
+<div class="card soft"><b>dónde · adónde · de dónde</b> — 어디에서 · 어디로 · 어디 출신<br/>
+<span class="es">¿Dónde vives?</span><br/><span class="ko">어디 살아?</span><br/>
+<span class="es">¿Adónde vas de vacaciones?</span><br/><span class="ko">휴가 어디로 가?</span><br/>
+<span class="es">¿De dónde eres?</span><br/><span class="ko">어디 출신이야?</span></div>
+<div class="card soft"><b>cuándo</b> — 언제<br/>
+<span class="es">¿Cuándo empezaste a estudiar español?</span><br/><span class="ko">스페인어 언제 시작했어?</span><br/>
+<span class="es">¿Desde cuándo vives aquí?</span><br/><span class="ko">언제부터 여기 살았어?</span></div>
+<div class="card soft"><b>cómo</b> — 어떻게, 어때<br/>
+<span class="es">¿Cómo es tu ciudad?</span><br/><span class="ko">너희 도시는 어때?</span><br/>
+<span class="es">¿Cómo vas al trabajo?</span><br/><span class="ko">회사에 어떻게 가?</span><br/>
+<span class="es">¿Cómo se dice "우산" en español?</span><br/><span class="ko">"우산"을 스페인어로 어떻게 말해요?</span></div>
+<div class="card soft"><b>cuánto · cuánta · cuántos · cuántas</b> — 얼마나, 몇<br/>
+<span class="es">¿Cuánto cuesta?</span><br/><span class="ko">얼마예요?</span><br/>
+<span class="es">¿Cuántos años tienes?</span><br/><span class="ko">몇 살이야?</span><br/>
+<span class="es">¿Cuánto tiempo tardas en llegar?</span><br/><span class="ko">도착하는 데 얼마나 걸려?</span><br/>
+<span class="small">뒤 명사의 성·수에 맞추기: cuántas personas, cuántos días</span></div>
+<div class="card soft"><b>por qué · para qué</b> — 왜 · 무엇을 위해<br/>
+<span class="es">¿Por qué estudias español?</span><br/><span class="ko">왜 스페인어를 공부해?</span><br/>
+<span class="es">¿Para qué sirve esto?</span><br/><span class="ko">이건 어디에 쓰는 거예요?</span></div>
+<div class="card soft"><b>qué tal</b> — 어땠어, 어때 (가벼운 안부·감상)<br/>
+<span class="es">¿Qué tal el fin de semana?</span><br/><span class="ko">주말 어땠어?</span><br/>
+<span class="es">¿Qué tal te fue el examen?</span><br/><span class="ko">시험 어떻게 됐어?</span></div>
+<h3>③ qué vs cuál — 가장 헷갈리는 부분</h3>
+<div class="card yellow"><b>ser 동사 앞에서는 대부분 cuál</b><br/>
+<span class="es">¿Cuál es tu número de teléfono?</span> ✔<br/><span class="bad">¿Qué es tu número?</span> ✘<br/><br/>
+<b>명사 바로 앞에서는 qué</b><br/>
+<span class="es">¿Qué libro estás leyendo?</span> ✔<br/><br/>
+<b>qué es = 정의를 물을 때</b><br/>
+<span class="es">¿Qué es el turrón?</span> 투론이 뭐예요?</div>
+<h3>④ 전치사 + 의문사 (전치사는 항상 맨 앞!)</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>¿Con quién...?</td><td>누구와?</td></tr>
+<tr><td>¿De quién es...?</td><td>누구 거야?</td></tr>
+<tr><td>¿A quién...?</td><td>누구에게? 누구를?</td></tr>
+<tr><td>¿A qué hora...?</td><td>몇 시에?</td></tr>
+<tr><td>¿En qué...?</td><td>무엇에서? (¿En qué trabajas?)</td></tr>
+<tr><td>¿De qué trata...?</td><td>무슨 내용이야? (책·영화)</td></tr>
+<tr><td>¿Desde cuándo...?</td><td>언제부터?</td></tr>
+<tr><td>¿Hasta cuándo...?</td><td>언제까지?</td></tr>
+<tr><td>¿Para cuándo...?</td><td>언제까지 필요해?</td></tr>
+<tr><td>¿Por dónde...?</td><td>어디를 지나서? 어느 쪽으로?</td></tr>
+</table></div>
+<div class="card red"><span class="bad">¿Quién vives con?</span> ✘ → <span class="es">¿Con quién vives?</span> ✔<br/>영어처럼 전치사를 뒤에 두지 않아요.</div>
+<h3>⑤ 같은 질문, 시제만 바꾸기</h3>
+<div class="tbl"><table><tr><th>질문</th><th>뜻</th></tr>
+<tr><td>¿Qué haces los fines de semana?</td><td>주말에 보통 뭐 해? (현재)</td></tr>
+<tr><td>¿Qué estás haciendo?</td><td>지금 뭐 하고 있어? (진행)</td></tr>
+<tr><td>¿Qué has hecho hoy?</td><td>오늘 뭐 했어? (현재완료)</td></tr>
+<tr><td>¿Qué hiciste ayer?</td><td>어제 뭐 했어? (단순과거)</td></tr>
+<tr><td>¿Qué hacías de niña?</td><td>어렸을 때 뭐 하곤 했어? (불완료과거)</td></tr>
+<tr><td>¿Qué vas a hacer mañana?</td><td>내일 뭐 할 거야? (ir a)</td></tr>
+</table></div>
+<h3>⑥ 정중하게 묻기 (롤플레이 필수)</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>¿Puede / Podría + 원형...?</td><td>~해 주실 수 있나요?</td></tr>
+<tr><td>¿Me puede decir dónde está...?</td><td>~가 어디 있는지 알려 주실래요?</td></tr>
+<tr><td>¿Sabe si hay...?</td><td>~가 있는지 아세요?</td></tr>
+<tr><td>¿Le importa si abro la ventana?</td><td>창문 열어도 괜찮을까요?</td></tr>
+<tr><td>¿Se puede pagar con tarjeta?</td><td>카드로 계산할 수 있나요?</td></tr>
+<tr><td>¿Tienen...? / ¿Hay...?</td><td>~ 있나요?</td></tr>
+<tr><td>¿Está incluido el desayuno?</td><td>아침 식사가 포함되어 있나요?</td></tr>
+</table></div>
+<div class="card yellow"><b>간접 질문</b>도 의문사 악센트는 그대로 유지해요.<br/>
+<span class="es">¿Sabe dónde está la estación?</span><br/><span class="ko">역이 어디 있는지 아세요?</span><br/>
+<span class="es">No sé qué hacer.</span><br/><span class="ko">뭘 해야 할지 모르겠어요.</span><br/>
+예/아니요 간접 질문은 <b>si</b>: <span class="es">¿Sabe si el museo abre hoy?</span></div>
+<h3>⑦ 대화를 이어가는 되묻기</h3>
+<div class="grid">
+<div class="card"><div class="es">¿Y tú? / ¿Y usted?</div><div class="ko">너는? / 당신은요?</div></div>
+<div class="card"><div class="es">¿Ah, sí? ¿Y qué tal?</div><div class="ko">아 그래? 어땠어?</div></div>
+<div class="card"><div class="es">¿Con quién fuiste?</div><div class="ko">누구랑 갔어?</div></div>
+<div class="card"><div class="es">¿Te gustó?</div><div class="ko">마음에 들었어?</div></div>
+<div class="card"><div class="es">¿Por qué lo dices?</div><div class="ko">왜 그렇게 생각해?</div></div>
+<div class="card"><div class="es">¿Qué quiere decir "..."?</div><div class="ko">"…"가 무슨 뜻이에요?</div></div>
+</div>
+<h3>⑧ 자주 틀리는 질문</h3>
+<div class="card red">
+<span class="bad">¿Qué es tu nombre?</span> → <span class="es">¿Cómo te llamas? / ¿Cuál es tu nombre?</span><br/><br/>
+<span class="bad">¿Dónde vas?</span> → <span class="es">¿Adónde vas?</span> (이동은 adónde)<br/><br/>
+<span class="bad">¿Cuántos años eres?</span> → <span class="es">¿Cuántos años tienes?</span><br/><br/>
+<span class="bad">¿Porque estudias?</span> → <span class="es">¿Por qué estudias?</span> (질문은 띄어 쓰고 악센트)<br/><br/>
+<span class="bad">¿Cuánto personas?</span> → <span class="es">¿Cuántas personas?</span></div>
+<h3>✏️ 연습: 대답을 보고 질문 만들기</h3>
+<div class="card soft">질문을 먼저 소리 내 말해 보고, 눌러서 정답을 확인하세요.</div>
+<details class="card"><summary><b>Vivo en Seúl.</b></summary><div class="es">¿Dónde vives?</div></details>
+<details class="card"><summary><b>Vivo con mis padres.</b></summary><div class="es">¿Con quién vives?</div></details>
+<details class="card"><summary><b>Tengo treinta años.</b></summary><div class="es">¿Cuántos años tienes?</div></details>
+<details class="card"><summary><b>Trabajo en una empresa de electrodomésticos.</b></summary><div class="es">¿Dónde trabajas? / ¿A qué te dedicas?</div></details>
+<details class="card"><summary><b>Estudio español porque quiero viajar a España.</b></summary><div class="es">¿Por qué estudias español?</div></details>
+<details class="card"><summary><b>La clase empieza a las siete.</b></summary><div class="es">¿A qué hora empieza la clase?</div></details>
+<details class="card"><summary><b>Voy al trabajo en metro.</b></summary><div class="es">¿Cómo vas al trabajo?</div></details>
+<details class="card"><summary><b>Mi color favorito es el verde.</b></summary><div class="es">¿Cuál es tu color favorito?</div></details>
+<details class="card"><summary><b>Estudio español desde el año pasado.</b></summary><div class="es">¿Desde cuándo estudias español?</div></details>
+<details class="card"><summary><b>El fin de semana fui a la playa.</b></summary><div class="es">¿Qué hiciste el fin de semana? / ¿Adónde fuiste?</div></details>
+<details class="card"><summary><b>Este bolso cuesta cuarenta euros.</b></summary><div class="es">¿Cuánto cuesta este bolso?</div></details>
+<details class="card"><summary><b>El libro trata de una familia en Madrid.</b></summary><div class="es">¿De qué trata el libro?</div></details>
+<details class="card"><summary><b>El sábado voy a ver una película.</b></summary><div class="es">¿Qué vas a hacer el sábado?</div></details>
+<details class="card"><summary><b>Es el coche de mi hermano.</b></summary><div class="es">¿De quién es el coche?</div></details>
+</section>
+<section class="panel" id="connectors">
+<h2>🔗 연결 표현 · 대화 표현</h2>
+<div class="card soft">문장과 문장을 이어 주면 답변이 길어지고 자연스러워져요. 회화·작문 점수의 "담화 구성" 부분에 직접 반영돼요.</div>
+<h3>⭐ entonces — 쓰임이 가장 많은 단어</h3>
+<div class="card"><b>① 그래서 (결과)</b><br/><span class="es">Llovía mucho, entonces me quedé en casa.</span><br/><span class="ko">비가 많이 와서 집에 있었어요.</span></div>
+<div class="card"><b>② 그러면 (상대 말을 받아서)</b><br/><span class="es">— Mañana no puedo. — Entonces, ¿quedamos el viernes?</span><br/><span class="ko">— 내일은 안 돼. — 그럼 금요일에 만날까?</span></div>
+<div class="card"><b>③ 그때, 당시</b><br/><span class="es">En 2020 vivía en Daegu. Entonces trabajaba en una tienda.</span><br/><span class="ko">2020년에 대구에 살았어요. 그때는 가게에서 일했어요.</span></div>
+<div class="card"><b>④ 그래서 결론은 (정리)</b><br/><span class="es">Entonces, para mí lo más importante es la familia.</span><br/><span class="ko">그러니까 저에게 가장 중요한 건 가족이에요.</span></div>
+<h3>그래서·그러므로 (결과)</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>por eso</td><td>그래서 (가장 무난)</td></tr>
+<tr><td>así que</td><td>그러니까, 그래서 (구어)</td></tr>
+<tr><td>entonces</td><td>그래서, 그러면</td></tr>
+<tr><td>por lo tanto</td><td>따라서 (작문용)</td></tr>
+</table></div>
+<div class="card green"><div class="es">Mañana tengo examen, así que esta noche no salgo.</div><div class="ko">내일 시험이라서 오늘 밤엔 안 나가요.</div></div>
+<h3>왜냐하면 (이유)</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>porque</td><td>왜냐하면 (문장 중간)</td></tr>
+<tr><td>como</td><td>~이니까 (문장 맨 앞)</td></tr>
+<tr><td>ya que</td><td>~이므로</td></tr>
+<tr><td>es que</td><td>그게 말이야… (변명·사정 설명)</td></tr>
+<tr><td>por + 명사</td><td>~ 때문에 (por la lluvia)</td></tr>
+</table></div>
+<div class="card green"><div class="es">Como hacía buen tiempo, fuimos a la playa.</div><div class="ko">날씨가 좋아서 해변에 갔어요.</div></div>
+<div class="card green"><div class="es">— ¿Vienes a la fiesta? — Lo siento, es que tengo que trabajar.</div><div class="ko">— 파티 올래? — 미안, 그게 일을 해야 해서.</div></div>
+<h3>하지만 (대조)</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>pero</td><td>하지만</td></tr>
+<tr><td>sin embargo</td><td>그렇지만 (조금 격식)</td></tr>
+<tr><td>aunque</td><td>~이긴 하지만</td></tr>
+<tr><td>en cambio</td><td>반면에</td></tr>
+<tr><td>mientras que</td><td>~인 반면</td></tr>
+<tr><td>a pesar de + 명사/원형</td><td>~에도 불구하고</td></tr>
+</table></div>
+<div class="card green"><div class="es">Mi hermana es muy abierta; yo, en cambio, soy un poco tímida.</div><div class="ko">언니는 아주 외향적이에요. 반면에 저는 좀 수줍어요.</div></div>
+<h3>게다가 (추가)</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>además</td><td>게다가</td></tr>
+<tr><td>también</td><td>또한</td></tr><tr><td>tampoco</td><td>~도 아니다</td></tr>
+<tr><td>incluso</td><td>심지어</td></tr>
+<tr><td>por un lado... por otro lado...</td><td>한편으로는… 다른 한편으로는…</td></tr>
+</table></div>
+<h3>순서·시간</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>primero</td><td>먼저</td></tr><tr><td>luego</td><td>그다음</td></tr><tr><td>después</td><td>그 후</td></tr>
+<tr><td>más tarde</td><td>나중에</td></tr><tr><td>al final</td><td>결국</td></tr><tr><td>por último</td><td>마지막으로</td></tr>
+<tr><td>antes de + 원형</td><td>~하기 전에</td></tr>
+<tr><td>después de + 원형</td><td>~한 후에</td></tr>
+<tr><td>al + 원형</td><td>~하자마자, ~할 때 (al llegar)</td></tr>
+<tr><td>mientras</td><td>~하는 동안</td></tr>
+<tr><td>hasta que</td><td>~할 때까지</td></tr><tr><td>desde que</td><td>~한 이후로</td></tr>
+<tr><td>de repente</td><td>갑자기</td></tr>
+</table></div>
+<div class="card green"><div class="es">Después de cenar, vimos una película. Al llegar a casa, me acosté.</div><div class="ko">저녁을 먹은 후 영화를 봤어요. 집에 도착하자마자 잤어요.</div></div>
+<h3>예시·바꿔 말하기</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>por ejemplo</td><td>예를 들어</td></tr>
+<tr><td>es decir</td><td>즉</td></tr>
+<tr><td>o sea</td><td>그러니까 (구어)</td></tr>
+<tr><td>como</td><td>~ 같은 (comida picante, como el kimchi)</td></tr>
+</table></div>
+<h3>조건·가정</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>si + 현재, 현재/미래</td><td>만약 ~하면 (Si llueve, no salgo.)</td></tr>
+<tr><td>en ese caso</td><td>그런 경우에는</td></tr>
+<tr><td>depende de</td><td>~에 따라 달라요</td></tr>
+</table></div>
+<h3>정리·마무리</h3>
+<div class="tbl"><table class="vocab"><tr><th>표현</th><th>뜻</th></tr>
+<tr><td>en resumen</td><td>요약하면</td></tr>
+<tr><td>en general</td><td>대체로</td></tr>
+<tr><td>por todo eso</td><td>이런 모든 이유로</td></tr>
+<tr><td>y eso es todo</td><td>이상입니다 (발표 끝)</td></tr>
+</table></div>
+<h3>💬 대화 채우기 (시간 벌기·자연스러움)</h3>
+<div class="grid">
+<div class="card"><div class="es">pues · bueno · a ver</div><div class="ko">음, 글쎄 · 어디 보자</div></div>
+<div class="card"><div class="es">la verdad es que...</div><div class="ko">사실은…</div></div>
+<div class="card"><div class="es">por cierto, ...</div><div class="ko">그런데 말이야 (화제 전환)</div></div>
+<div class="card"><div class="es">oye · mira</div><div class="ko">저기 · 있잖아 (친구에게)</div></div>
+<div class="card"><div class="es">oiga · perdone</div><div class="ko">저기요 · 실례합니다 (usted)</div></div>
+<div class="card"><div class="es">vale · claro · de acuerdo</div><div class="ko">좋아 · 물론 · 알겠어</div></div>
+<div class="card"><div class="es">¿sabes? · ¿no?</div><div class="ko">있잖아? · 그렇지?</div></div>
+<div class="card"><div class="es">¡qué bien! · ¡qué pena!</div><div class="ko">잘됐다! · 아쉽다!</div></div>
+</div>
+<h3>📝 연결 표현을 넣은 답변 예시</h3>
+<div class="card soft"><div class="question" style="margin-bottom:6px">¿Prefieres vivir en una ciudad o en un pueblo?</div>
+<div class="es">Pues, la verdad es que prefiero vivir en una ciudad. Por un lado, hay más transporte y, además, tengo mi trabajo allí. Por otro lado, a veces hay mucho ruido. Por ejemplo, cuando vivía en Daegu, mi piso estaba en una calle muy ruidosa, así que no dormía bien. Entonces, en el futuro me gustaría vivir en una ciudad, pero en un barrio tranquilo.</div>
+<div class="ko">음, 사실 저는 도시에 사는 게 좋아요. 한편으로는 교통이 더 많고, 게다가 직장도 거기 있어요. 다른 한편으로는 가끔 아주 시끄러워요. 예를 들어 대구에 살 때 제 집이 아주 시끄러운 길에 있어서 잘 못 잤어요. 그래서 나중에는 도시에 살되 조용한 동네에서 살고 싶어요.</div></div>
+<div class="card green"><b>들어간 연결어:</b> pues · la verdad es que · por un lado · además · por otro lado · por ejemplo · así que · entonces · pero</div>
+</section>
+<section class="panel" id="quiz">
+<h2>✅ 시제 퀴즈</h2>
+<div class="card soft">빈칸에 맞는 형태를 고르세요. 틀리면 이유를 보여 줘요.</div>
+<div class="card" id="quizBox">
+<div class="row" style="justify-content:space-between"><span class="small" id="quizProg"></span><span class="small" id="quizScore"></span></div>
+<p class="big" id="quizQ"></p>
+<div id="quizOpts"></div>
+<p class="small" id="quizExp"></p>
+<div class="row"><button class="btn" hidden="" id="quizNext">다음 문제</button><button class="btn ghost" id="quizRestart">처음부터</button></div>
+</div>
+</section>
+<section class="panel" id="flash">
+<h2>🃏 단어 카드</h2>
+<div class="card soft">주제 탭의 어휘 표에서 자동으로 만든 카드예요. 카드를 누르면 뜻이 보여요.</div>
+<div class="row"><select aria-label="주제 선택" id="flashTopic"></select><span class="small" id="flashCount"></span></div>
+<div aria-live="polite" class="card flip" id="flashCard" role="button" tabindex="0">
+<div class="big" id="flashFront"></div><div class="ko" id="flashBack" style="margin-top:8px;visibility:hidden"></div>
+</div>
+<div class="row"><button class="btn ghost" id="flashPrev">이전</button><button class="btn" id="flashNext">다음 카드</button><button class="btn ghost" id="flashShuffle">섞기</button></div>
+</section>
+<section class="panel" id="random">
+<h2>🎲 랜덤 회화 질문</h2>
+<div class="card soft">모든 주제의 예상 질문 중 하나를 뽑아요. 타이머를 켜고 <b>최소 1분</b> 동안 답해 보세요. 휴대폰 녹음 앱으로 녹음하면 더 좋아요.</div>
+<div class="card" style="text-align:center">
+<div class="small" id="rndTopic"></div>
+<p class="big question" id="rndQ">아래 버튼을 눌러 시작하세요</p>
+<p class="small" id="rndHint"></p>
+<div class="timer" id="rndTimer">1:00</div>
+<div class="row" style="justify-content:center;margin-top:10px"><button class="btn" id="rndNew">질문 뽑기</button><button class="btn ghost" id="rndStart">타이머 시작</button></div>
+</div>
+<div class="card green"><b>답변 체크:</b> ① 결론으로 시작했나 ② porque로 이유 ③ 예시나 경험(과거 시제) ④ 마무리 문장 — 4개를 다 넣으면 1분은 금방 채워져요.</div>
+</section>
+</div>
+<script>
+(function(){
+const cats=[...document.querySelectorAll('.cat')];
+const tabs=[...document.querySelectorAll('.tab')];
+const panels=[...document.querySelectorAll('.panel')];
+const tabLabel=id=>{const t=tabs.find(x=>x.dataset.tab===id);return t?t.textContent.trim():id};
+function showCat(cat){
+  cats.forEach(c=>c.classList.toggle('active',c.dataset.cat===cat));
+  tabs.forEach(t=>t.hidden=t.dataset.cat!==cat);
+}
+function activate(id,scroll=true){
+  const t=tabs.find(x=>x.dataset.tab===id); if(!t) return;
+  showCat(t.dataset.cat);
+  tabs.forEach(x=>x.classList.toggle('active',x===t));
+  panels.forEach(p=>p.classList.toggle('active',p.id===id));
+  t.scrollIntoView({block:'nearest',inline:'center'});
+  if(scroll) window.scrollTo({top:0,behavior:'smooth'});
+  try{localStorage.setItem('dele-tab',id)}catch(e){}
+}
+tabs.forEach(t=>t.addEventListener('click',()=>activate(t.dataset.tab)));
+cats.forEach(c=>c.addEventListener('click',()=>{
+  const first=tabs.find(t=>t.dataset.cat===c.dataset.cat); activate(first.dataset.tab);
+}));
+let saved=null; try{saved=localStorage.getItem('dele-tab')}catch(e){}
+activate(saved && document.getElementById(saved)?saved:'overview',false);
+
+/* word count for model answers */
+document.querySelectorAll('[data-count]').forEach(el=>{
+  const n=el.textContent.replace(/\(이름\)/g,'').trim().split(/\s+/).filter(w=>/[a-záéíóúñü]/i.test(w)).length;
+  const s=document.createElement('div'); s.className='wc'; s.textContent='약 '+n+'단어';
+  el.after(s);
+});
+
+/* checklist persistence */
+document.querySelectorAll('#checklist input[data-k]').forEach(cb=>{
+  try{cb.checked=localStorage.getItem('dele-'+cb.dataset.k)==='1'}catch(e){}
+  cb.addEventListener('change',()=>{try{localStorage.setItem('dele-'+cb.dataset.k,cb.checked?'1':'0')}catch(e){}});
+});
+
+/* search index built from the page */
+const index=[];
+panels.forEach(p=>{
+  if(['quiz','flash','random'].includes(p.id)) return;
+  p.querySelectorAll('.card').forEach(c=>{
+    const es=c.querySelector('.es'), q=c.querySelector('.question');
+    if(es||q){index.push({el:c,panel:p.id,main:(q||es).textContent.trim(),sub:(c.querySelector('.ko')||{}).textContent||c.textContent.replace((q||es).textContent,'').trim()});}
+    else index.push({el:c,panel:p.id,main:c.textContent.trim().slice(0,90),sub:''});
+  });
+  p.querySelectorAll('tr').forEach(tr=>{
+    const tds=[...tr.querySelectorAll('td')]; if(!tds.length) return;
+    index.push({el:tr,panel:p.id,main:tds[0].textContent.trim(),sub:tds.slice(1).map(x=>x.textContent.trim()).join(' / ')});
+  });
+});
+const input=document.getElementById('search'), result=document.getElementById('searchResult');
+const esc=s=>s.replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+input.addEventListener('input',()=>{
+  const q=norm(input.value.trim());
+  if(q.length<2){result.style.display='none';return}
+  const hits=index.filter(x=>norm(x.main+' '+x.sub).includes(q)).slice(0,30);
+  result.style.display='block';
+  if(!hits.length){result.innerHTML='<div style="padding:8px">검색 결과가 없어요. 다른 철자나 한국어 뜻으로 찾아보세요.</div>';return}
+  result.innerHTML=hits.map((h,i)=>`<button class="hit" data-i="${index.indexOf(h)}"><b>${esc(h.main.slice(0,80))}</b>${h.sub?' — <span class="ko">'+esc(h.sub.slice(0,80))+'</span>':''} <span class="badge">${esc(tabLabel(h.panel))}</span></button>`).join('');
+});
+result.addEventListener('click',e=>{
+  const b=e.target.closest('.hit'); if(!b) return;
+  const h=index[+b.dataset.i]; activate(h.panel,false);
+  result.style.display='none';
+  setTimeout(()=>{h.el.scrollIntoView({behavior:'smooth',block:'center'});h.el.classList.remove('flash');void h.el.offsetWidth;h.el.classList.add('flash')},50);
+});
+
+/* tense quiz */
+const Q=[
+["Ayer ___ al cine con mi hermana.",["fui","he ido","iba"],0,"ayer = 끝난 특정 과거 → 단순과거"],
+["¿___ alguna vez paella?",["Probaste","Has probado","Probabas"],1,"alguna vez = 경험 → 현재완료"],
+["Cuando era pequeña, ___ mucho en el parque.",["jugué","jugaba","he jugado"],1,"어린 시절의 반복 습관 → 불완료과거"],
+["Este fin de semana ___ a visitar a mis padres.",["voy","fui","iba"],0,"미래 계획 → ir a + 원형"],
+["Hace diez años ___ en un hospital.",["he estado","estaba","estuve"],2,"hace diez años = 특정 시점의 끝난 일 → 단순과거"],
+["Ahora mismo ___ la cena.",["preparé","estoy preparando","preparaba"],1,"ahora mismo = 지금 진행 중 → estar + gerundio"],
+["Mientras ___ la tele, sonó el teléfono.",["veía","vi","he visto"],0,"mientras + 배경 동작 → 불완료과거, 끼어든 사건은 단순과거"],
+["El año pasado ___ a Japón.",["he viajado","viajé","viajaba"],1,"el año pasado → 단순과거"],
+["Todavía no ___ los deberes.",["terminé","terminaba","he terminado"],2,"todavía no → 현재완료"],
+["Antes ___ en Daegu, pero ahora vivo en otra ciudad.",["vivía","viví","he vivido"],0,"antes ... pero ahora = 과거의 상태 → 불완료과거"],
+["Normalmente ___ a trabajar a las ocho.",["empecé","empiezo","empezaba"],1,"normalmente = 현재 습관 → 현재 (e→ie)"],
+["La semana pasada ___ un examen muy difícil.",["tuve","he tenido","tenía"],0,"la semana pasada → 단순과거 (tener → tuve)"],
+["¿Qué ___ ayer por la tarde?",["has hecho","hacías","hiciste"],2,"ayer → 단순과거 (hacer → hiciste)"],
+["Ya ___ esa película; es muy buena.",["vi","he visto","veía"],1,"ya = 현재와 연결된 경험 → 현재완료 (ver → visto)"],
+["Cuando llegué a la estación, el tren ya ___.",["salió","había salido","sale"],1,"내가 도착하기 전에 이미 끝난 일 → 과거완료(haber 불완료 + 분사). 독해에 가끔 나와요"],
+["Esta mañana ___ muy temprano.",["me he levantado","me levantaba","me levanto"],0,"esta mañana = 오늘 안의 일 → 스페인식으론 현재완료 (중남미는 me levanté도 자연스러움)"],
+["De niña, mi abuela me ___ cuentos todas las noches.",["contó","contaba","ha contado"],1,"todas las noches = 과거 반복 → 불완료과거"],
+["El sábado pasado ___ con mis amigos y lo pasamos muy bien.",["salí","salía","he salido"],0,"el sábado pasado → 단순과거"]
+];
+let order=[],qi=0,score=0;
+const qQ=document.getElementById('quizQ'),qO=document.getElementById('quizOpts'),qE=document.getElementById('quizExp'),
+qN=document.getElementById('quizNext'),qP=document.getElementById('quizProg'),qS=document.getElementById('quizScore');
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function startQuiz(){order=shuffle(Q.map((_,i)=>i));qi=0;score=0;showQ()}
+function showQ(){
+  qE.textContent='';qN.hidden=true;
+  if(qi>=order.length){qQ.textContent=`끝! ${order.length}문제 중 ${score}개 정답`;qO.innerHTML='';qP.textContent='';qS.textContent='';
+    qE.textContent=score>=order.length*.8?'아주 좋아요. 시제 감각이 잡혀 있어요.':'틀린 문제의 시간 표현을 ⏰ 동사 시제 탭에서 다시 확인해 보세요.';return}
+  const [s,opts,ans]=Q[order[qi]];
+  qP.textContent=`${qi+1} / ${order.length}`;qS.textContent=`정답 ${score}`;
+  qQ.textContent=s;
+  qO.innerHTML=opts.map((o,i)=>`<button class="opt" data-i="${i}">${o}</button>`).join('');
+}
+qO.addEventListener('click',e=>{
+  const b=e.target.closest('.opt'); if(!b||qN.hidden===false) return;
+  const [,opts,ans,exp]=Q[order[qi]]; const pick=+b.dataset.i;
+  qO.querySelectorAll('.opt').forEach((x,i)=>{if(i===ans)x.classList.add('right');else if(i===pick)x.classList.add('wrong');x.disabled=true});
+  if(pick===ans){score++;qE.innerHTML='<span class="ok">정답!</span> '+exp}else{qE.innerHTML='<span class="bad">아쉬워요.</span> 정답: <b>'+opts[ans]+'</b> — '+exp}
+  qS.textContent=`정답 ${score}`;qN.hidden=false;qN.focus();
+});
+qN.addEventListener('click',()=>{qi++;showQ()});
+document.getElementById('quizRestart').addEventListener('click',startQuiz);
+startQuiz();
+
+/* flashcards from vocab tables */
+const topicIds=['examiner','connectors','people','describe','shopping','health','study','work','leisure','city','reading','listening'];
+const decks={};
+topicIds.forEach(id=>{
+  const p=document.getElementById(id); const arr=[];
+  p.querySelectorAll('table').forEach(tb=>{
+    const ths=tb.querySelectorAll('th'); if(ths.length!==2) return;
+    tb.querySelectorAll('tr').forEach(tr=>{
+      const td=tr.querySelectorAll('td'); if(td.length!==2) return;
+      const a=td[0].textContent.split('·').map(s=>s.trim()).filter(Boolean);
+      const b=td[1].textContent.split('·').map(s=>s.trim()).filter(Boolean);
+      if(a.length===b.length) a.forEach((x,i)=>arr.push([x,b[i]])); else arr.push([td[0].textContent.trim(),td[1].textContent.trim()]);
+    });
+  });
+  if(arr.length) decks[id]=arr;
+});
+decks.all=Object.values(decks).flat();
+const sel=document.getElementById('flashTopic');
+sel.innerHTML='<option value="all">전체 주제</option>'+Object.keys(decks).filter(k=>k!=='all').map(k=>`<option value="${k}">${tabLabel(k)}</option>`).join('');
+let deck=[],fi=0;
+const fF=document.getElementById('flashFront'),fB=document.getElementById('flashBack'),fC=document.getElementById('flashCount'),card=document.getElementById('flashCard');
+function loadDeck(){deck=shuffle([...decks[sel.value]]);fi=0;showCard()}
+function showCard(){const [a,b]=deck[fi];fF.textContent=a;fB.textContent=b;fB.style.visibility='hidden';fC.textContent=`${fi+1} / ${deck.length}`}
+const flip=()=>{fB.style.visibility=fB.style.visibility==='hidden'?'visible':'hidden'};
+card.addEventListener('click',flip);
+card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();flip()}});
+document.getElementById('flashNext').addEventListener('click',()=>{fi=(fi+1)%deck.length;showCard()});
+document.getElementById('flashPrev').addEventListener('click',()=>{fi=(fi-1+deck.length)%deck.length;showCard()});
+document.getElementById('flashShuffle').addEventListener('click',loadDeck);
+sel.addEventListener('change',loadDeck);
+loadDeck();
+
+/* random speaking question */
+const qs=[];
+panels.forEach(p=>p.querySelectorAll('.question').forEach(q=>{
+  const card=q.closest('.card'); const hint=card?card.textContent.replace(q.textContent,'').trim():'';
+  qs.push({q:q.textContent.trim(),hint,panel:p.id});
+}));
+const rQ=document.getElementById('rndQ'),rH=document.getElementById('rndHint'),rT=document.getElementById('rndTopic'),rTm=document.getElementById('rndTimer'),rS=document.getElementById('rndStart');
+let timer=null,left=60;
+const fmt=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+function stop(){clearInterval(timer);timer=null;rS.textContent='타이머 시작'}
+document.getElementById('rndNew').addEventListener('click',()=>{
+  const x=qs[Math.floor(Math.random()*qs.length)];
+  rQ.textContent=x.q;rT.textContent=tabLabel(x.panel);rH.textContent='힌트: '+x.hint;rH.style.visibility='hidden';
+  stop();left=60;rTm.textContent=fmt(left);
+});
+rS.addEventListener('click',()=>{
+  if(timer){stop();return}
+  if(left<=0)left=60;
+  rS.textContent='멈춤';
+  timer=setInterval(()=>{left--;rTm.textContent=fmt(Math.max(left,0));if(left===30)rH.style.visibility='visible';if(left<=0){stop();rTm.textContent='끝!'}},1000);
+});
+})();
+</script>
+</body>
+</html>
