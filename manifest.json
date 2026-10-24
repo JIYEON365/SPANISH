@@ -1,7 +1,7 @@
 {
   "name": "스페인어 공부 - DELE A2 & 회화",
   "short_name": "스페인어 공부",
-  "description": "DELE A2 학습 노트와 회화 치트시트",
+  "description": "학원 노트, DELE A2 학습 노트와 회화 치트시트",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

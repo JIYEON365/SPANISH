@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#263d52">
+<link rel="manifest" href="manifest.json">
+<title>학원 노트 | 스페인어 공부</title>
+<style>
+:root{--ink:#26313b;--muted:#687583;--line:#e5e8eb;--bg:#f4f6f8;--paper:#fff;--blue:#263d52;--blue2:#345e8a;--blue-soft:#edf4fb;--accent:#b84c36;--accent-soft:#fff0eb;--green:#31745b;--green-soft:#eaf6ef;--gold:#8b641d;--gold-soft:#fff6df;--shadow:0 8px 24px #263d520d}
+@media (prefers-color-scheme:dark){:root{--ink:#e7e9ee;--muted:#9aa3b2;--line:#2e3540;--bg:#14181d;--paper:#1d232a;--blue-soft:#1f2c3a;--blue2:#8fb6e0;--accent:#e2735b;--accent-soft:#3a2420;--green:#62c49a;--green-soft:#1b3127;--gold:#e0b45e;--gold-soft:#352d1b;--shadow:none}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;line-height:1.6;padding-bottom:env(safe-area-inset-bottom,0)}
+button,input,textarea,select{font:inherit;color:inherit}
+.topbar{position:sticky;top:0;z-index:50;background:#243d52;color:#fff;padding:9px 14px;display:flex;gap:14px;align-items:center;font-size:14px;box-shadow:0 2px 8px #0002;overflow-x:auto;white-space:nowrap}
+.topbar a{color:#fff;text-decoration:none}.topbar a.home{font-weight:700}.topbar .cur{text-decoration:underline;text-underline-offset:4px}
+.hero{background:linear-gradient(135deg,#263d52,#496b7c);color:#fff;padding:26px 18px 22px}
+.inner,.wrap{max-width:850px;margin:auto}
+.eyebrow{font-size:.75rem;letter-spacing:.13em;opacity:.8}
+.hero h1{font-size:clamp(1.6rem,5vw,2.3rem);line-height:1.2;margin:8px 0 6px}
+.hero p{margin:0;color:#e6edf2;font-size:.95rem}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.stats span{border:1px solid #ffffff55;border-radius:99px;padding:3px 10px;font-size:.8rem}
+.tabs{position:sticky;top:39px;z-index:40;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(10px);display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px 16px}
+.tab{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:9px 4px;font-weight:700;cursor:pointer;font-size:.92rem}
+.tab.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.tab .n[hidden]{display:none}.tab .n{display:inline-block;min-width:18px;border-radius:9px;background:var(--accent);color:#fff;font-size:.7rem;padding:0 5px;margin-left:4px;vertical-align:2px}
+.wrap{padding:6px 16px 60px}
+.panel{display:none}.panel.active{display:block}
+.search{width:100%;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:11px 14px;margin:6px 0 12px}
+.week{margin:18px 0 26px}
+.week-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.week-head h2{font-size:1.2rem;margin:0}
+.date{font-size:.8rem;color:var(--muted)}
+.ex-banner{background:var(--gold-soft);color:var(--gold);border-radius:10px;padding:9px 12px;font-size:.88rem;margin-bottom:10px}
+.week-sum{color:var(--muted);font-size:.92rem;margin:0 0 10px}
+.item{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin:10px 0;box-shadow:var(--shadow);overflow:hidden}
+.item-top{display:flex;align-items:flex-start;gap:10px;padding:14px 14px 12px;cursor:pointer}
+.item-main{flex:1;min-width:0}
+.type{display:inline-block;font-size:.72rem;font-weight:700;border-radius:6px;padding:1px 7px;margin-bottom:4px}
+.type.vocab{background:var(--blue-soft);color:var(--blue2)}.type.grammar{background:var(--green-soft);color:var(--green)}.type.expr{background:var(--accent-soft);color:var(--accent)}
+.es{font-weight:750;font-size:1.08rem;color:var(--blue2);word-break:keep-all}
+.ko{color:var(--muted);font-size:.93rem}
+.star{border:0;background:none;font-size:1.3rem;cursor:pointer;padding:0 2px;line-height:1;opacity:.35;filter:grayscale(1)}
+.star.on{opacity:1;filter:none}
+.chev{color:var(--muted);transition:transform .2s;font-size:.9rem;margin-top:6px}
+.item.open .chev{transform:rotate(90deg)}
+.item-body{display:none;padding:0 14px 14px;border-top:1px dashed var(--line)}
+.item.open .item-body{display:block}
+.memo{font-size:.86rem;color:var(--muted);background:var(--bg);border-radius:8px;padding:6px 10px;margin-top:12px}
+.lbl{font-size:.78rem;font-weight:700;letter-spacing:.04em;color:var(--muted);margin:14px 0 6px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{background:var(--bg);font-size:.8rem}
+tr:last-child td{border-bottom:0}
+td:first-child{color:var(--muted)}
+.tbl-title{font-size:.85rem;font-weight:650;margin:12px 0 5px}
+.exs p{margin:6px 0}.exs .e{font-weight:600}.exs .k{color:var(--muted);font-size:.88rem;display:block}
+.rel{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);border-radius:10px;padding:5px 9px;font-size:.86rem;background:var(--bg)}
+.chip b{font-weight:650}.chip i{font-style:normal;font-size:.72rem;color:var(--accent);margin-right:4px}
+.tip{border-left:4px solid var(--green);background:var(--green-soft);padding:9px 12px;border-radius:0 10px 10px 0;margin-top:14px;font-size:.9rem}
+.empty{text-align:center;color:var(--muted);padding:36px 10px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin:8px 0 14px}
+.box h3{margin:0 0 4px;font-size:1.05rem}
+.box p.s{margin:0 0 10px;color:var(--muted);font-size:.88rem}
+textarea,input[type=text]{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 12px}
+textarea{min-height:84px;resize:vertical}
+.row{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{border:1px solid var(--line);background:var(--paper);border-radius:99px;padding:5px 12px;font-size:.85rem;cursor:pointer}
+.seg button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:9px 14px;cursor:pointer;font-weight:600}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.block{width:100%}
+.btn:disabled{opacity:.45;cursor:default}
+.memo-item{display:flex;gap:10px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--line)}
+.memo-item:last-child{border-bottom:0}
+.memo-item .t{flex:1;white-space:pre-wrap;word-break:break-word}
+.memo-item .m{font-size:.75rem;color:var(--muted)}
+.memo-item.sent .t{color:var(--muted)}
+.x{border:0;background:none;color:var(--muted);cursor:pointer;font-size:1.05rem;padding:2px 6px}
+.steps{margin:0;padding-left:20px;font-size:.9rem;color:var(--muted)}
+.steps li{margin:3px 0}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0));transform:translateX(-50%) translateY(20px);background:#26313b;color:#fff;padding:10px 16px;border-radius:12px;font-size:.9rem;opacity:0;transition:.25s;pointer-events:none;z-index:100;max-width:90vw}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.card3d{background:var(--paper);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);min-height:230px;padding:22px 18px;display:flex;flex-direction:column;justify-content:center;text-align:center;cursor:pointer;margin:10px 0}
+.card3d .q{font-size:1.25rem;font-weight:700;color:var(--blue2);word-break:keep-all}
+.card3d .a{margin-top:16px;padding-top:16px;border-top:1px dashed var(--line);font-size:1.05rem;display:none;word-break:keep-all}
+.card3d.flip .a{display:block}
+.card3d .hint{font-size:.8rem;color:var(--muted);margin-top:14px}
+.card3d .src{font-size:.75rem;color:var(--muted);margin-bottom:10px}
+.progress{font-size:.85rem;color:var(--muted);text-align:center}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+</style>
+</head>
+<body>
+<nav class="topbar"><a class="home" href="index.html">← 스페인어 공부 홈</a><span style="opacity:.6">|</span><a href="class-notes.html" class="cur">학원 노트</a><a href="dele-a2.html">DELE A2 총정리</a><a href="speaking.html">회화 치트시트</a></nav>
+
+<header class="hero"><div class="inner">
+  <div class="eyebrow">MIS CLASES · WEEKLY NOTES</div>
+  <h1>학원 노트</h1>
+  <p>수업에서 기억에 남은 것만 적어두면, 활용형·예문·관련 표현까지 채워서 쌓아드려요.</p>
+  <div class="stats" id="stats"></div>
+</div></header>
+
+<div class="tabs" role="tablist">
+  <button class="tab active" data-tab="notes">📒 노트</button>
+  <button class="tab" data-tab="memo">✏️ 메모<span class="n" id="memoCount" hidden></span></button>
+  <button class="tab" data-tab="review">🔁 복습</button>
+</div>
+
+<main class="wrap">
+  <!-- 노트 -->
+  <section class="panel active" id="p-notes">
+    <input class="search" id="search" type="search" placeholder="🔍 단어·뜻·예문 검색 (예: acordarse, 기억)">
+    <div class="seg" id="noteFilter" style="margin-bottom:4px">
+      <button class="on" data-f="all">전체</button><button data-f="vocab">단어</button><button data-f="grammar">문법</button><button data-f="expr">표현</button><button data-f="star">⭐ 헷갈림</button>
+    </div>
+    <div id="weeks"></div>
+  </section>
+
+  <!-- 메모 -->
+  <section class="panel" id="p-memo">
+    <div class="box">
+      <h3>오늘 수업에서 기억나는 것</h3>
+      <p class="s">단어 하나, 문장 하나, "선생님이 이렇게 말했는데 뜻이…" 정도로 대충 적어도 괜찮아요.</p>
+      <textarea id="memoText" placeholder="예) quedar con alguien = 누구랑 만나기로 하다&#10;예) 선생님이 'ojalá'는 접속법이랑 쓴다고 함"></textarea>
+      <div class="row" style="justify-content:space-between;align-items:center">
+        <div class="seg" id="memoType"><button class="on" data-t="">자동</button><button data-t="단어">단어</button><button data-t="문법">문법</button><button data-t="표현">표현</button></div>
+        <button class="btn primary" id="addMemo">추가</button>
+      </div>
+    </div>
+
+    <div class="box">
+      <h3>쌓인 메모 <span class="date" id="memoSum"></span></h3>
+      <div id="memoList"></div>
+    </div>
+
+    <div class="box">
+      <h3>주말에 노트로 만들기</h3>
+      <ol class="steps">
+        <li>아래 버튼으로 아직 안 보낸 메모를 복사해요.</li>
+        <li>Claude의 <b>스페인어 공부방</b> 프로젝트 채팅에 붙여넣어요.</li>
+        <li>Claude가 정리한 <b>class-data.js</b> 파일을 GitHub에 업로드하면 📒 노트에 나타나요.</li>
+      </ol>
+      <div class="row"><button class="btn primary block" id="copyMemo">📋 Claude에게 보낼 내용 복사</button></div>
+      <div class="row grid2"><button class="btn" id="markSent">보낸 메모로 표시</button><button class="btn" id="clearSent">보낸 메모 지우기</button></div>
+    </div>
+
+    <div class="box">
+      <h3>백업</h3>
+      <p class="s">메모와 ⭐ 표시는 이 휴대폰 브라우저에만 저장돼요. 폰을 바꾸기 전엔 백업 파일을 받아두세요.</p>
+      <div class="row grid2"><button class="btn" id="exportBtn">⬇️ 백업 받기</button><button class="btn" id="importBtn">⬆️ 백업 불러오기</button></div>
+      <input type="file" id="importFile" accept="application/json,.json" hidden>
+    </div>
+  </section>
+
+  <!-- 복습 -->
+  <section class="panel" id="p-review">
+    <div class="seg" id="revFilter" style="margin:6px 0 4px">
+      <button class="on" data-r="all">전체</button><button data-r="latest">최근 주</button><button data-r="star">⭐ 헷갈림</button>
+    </div>
+    <div class="seg" id="revMode" style="margin:6px 0 4px">
+      <button class="on" data-m="es">스페인어 → 뜻</button><button data-m="ko">뜻 → 스페인어</button><button data-m="quiz">퀴즈 문제</button>
+    </div>
+    <div id="cardArea"></div>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+
+<script src="class-data.js"></script>
+<script>
+(function(){
+const NOTES = Array.isArray(window.CLASS_NOTES) ? window.CLASS_NOTES : [];
+const TYPE_KO = {vocab:'단어', grammar:'문법', expr:'표현'};
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+// ---------- storage ----------
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem('class-'+k); return v == null ? d : JSON.parse(v); }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem('class-'+k, JSON.stringify(v)); }catch(e){ toast('저장 공간에 저장하지 못했어요'); } }
+};
+let memos = store.get('memos', []);
+let stars = store.get('stars', {});
+function itemKey(w, it){ return w.id + '::' + it.es; }
+
+function toast(msg){ const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(()=>t.classList.remove('show'), 2000); }
+
+// ---------- tabs ----------
+document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+function showTab(id){
+  document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === id));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'p-'+id));
+  store.set('tab', id);
+  if(id === 'review') buildDeck();
+  window.scrollTo({top: 0});
+}
+
+// ---------- stats ----------
+function renderStats(){
+  const real = NOTES.filter(w => !w.example);
+  const items = real.reduce((n,w) => n + (w.items||[]).length, 0);
+  const pending = memos.filter(m => !m.sent).length;
+  $('#stats').innerHTML = `<span>📅 ${real.length}주 기록</span><span>📝 ${items}개 항목</span><span>⭐ ${Object.keys(stars).length}개 헷갈림</span>`;
+  const mc = $('#memoCount'); mc.hidden = !pending; mc.textContent = pending;
+}
+
+// ---------- notes ----------
+let noteFilter = 'all';
+document.querySelectorAll('#noteFilter button').forEach(b => b.addEventListener('click', () => {
+  noteFilter = b.dataset.f;
+  document.querySelectorAll('#noteFilter button').forEach(x => x.classList.toggle('on', x === b));
+  renderNotes();
+}));
+$('#search').addEventListener('input', renderNotes);
+
+function itemText(it){
+  return [it.es, it.ko, it.memo, it.tip,
+    ...(it.examples||[]).flatMap(e => [e.es, e.ko]),
+    ...(it.related||[]).flatMap(r => [r.es, r.ko]),
+    ...(it.tables||[]).flatMap(t => (t.rows||[]).flat())
+  ].join(' ').toLowerCase();
+}
+function fmtDate(d){ if(!d) return ''; const x = new Date(d+'T00:00:00'); if(isNaN(x)) return d; return `${x.getFullYear()}.${x.getMonth()+1}.${x.getDate()} (${'일월화수목금토'[x.getDay()]})`; }
+
+function renderItem(w, it, open){
+  const k = itemKey(w, it);
+  const tables = (it.tables||[]).map(t => `
+    ${t.title ? `<div class="tbl-title">${esc(t.title)}</div>` : ''}
+    <div class="tbl"><table>${t.head ? `<tr>${t.head.map(h=>`<th>${esc(h)}</th>`).join('')}</tr>` : ''}
+    ${(t.rows||[]).map(r => `<tr>${r.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</table></div>`).join('');
+  const exs = (it.examples||[]).length ? `<div class="lbl">예문</div><div class="exs">${it.examples.map(e=>`<p><span class="e">${esc(e.es)}</span><span class="k">${esc(e.ko)}</span></p>`).join('')}</div>` : '';
+  const rel = (it.related||[]).length ? `<div class="lbl">관련 표현</div><div class="rel">${it.related.map(r=>`<span class="chip">${r.tag?`<i>${esc(r.tag)}</i>`:''}<b>${esc(r.es)}</b> ${esc(r.ko)}</span>`).join('')}</div>` : '';
+  return `<article class="item${open?' open':''}" data-k="${esc(k)}">
+    <div class="item-top">
+      <div class="item-main"><span class="type ${esc(it.type)}">${TYPE_KO[it.type]||'메모'}</span><div class="es">${esc(it.es)}</div><div class="ko">${esc(it.ko)}</div></div>
+      <button class="star${stars[k]?' on':''}" aria-label="헷갈림 표시">⭐</button><span class="chev">▶</span>
+    </div>
+    <div class="item-body">
+      ${it.memo ? `<div class="memo">✏️ 내 메모: ${esc(it.memo)}</div>` : ''}
+      ${tables ? `<div class="lbl">정리</div>${tables}` : ''}
+      ${exs}${rel}
+      ${it.tip ? `<div class="tip">💡 ${esc(it.tip)}</div>` : ''}
+    </div></article>`;
+}
+
+function renderNotes(){
+  const q = $('#search').value.trim().toLowerCase();
+  const hasReal = NOTES.some(w => !w.example);
+  const weeks = NOTES.filter(w => !(w.example && hasReal));
+  let html = '', shown = 0;
+  weeks.forEach(w => {
+    const items = (w.items||[]).filter(it => {
+      if(noteFilter === 'star' && !stars[itemKey(w,it)]) return false;
+      if(['vocab','grammar','expr'].includes(noteFilter) && it.type !== noteFilter) return false;
+      if(q && !itemText(it).includes(q)) return false;
+      return true;
+    });
+    if(!items.length) return;
+    shown += items.length;
+    html += `<section class="week">
+      <div class="week-head"><h2>${esc(w.title)}</h2><span class="date">${fmtDate(w.date)}</span></div>
+      ${w.example ? `<div class="ex-banner">👀 예시예요. 실제 수업 노트가 들어오면 자동으로 사라져요.</div>` : ''}
+      ${w.summary && !w.example ? `<p class="week-sum">${esc(w.summary)}</p>` : ''}
+      ${items.map(it => renderItem(w, it, !!q)).join('')}
+    </section>`;
+  });
+  $('#weeks').innerHTML = html || `<div class="empty">${q || noteFilter !== 'all' ? '조건에 맞는 항목이 없어요.' : '아직 노트가 없어요.<br>✏️ 메모 탭에서 시작해 보세요.'}</div>`;
+}
+$('#weeks').addEventListener('click', e => {
+  const art = e.target.closest('.item'); if(!art) return;
+  if(e.target.closest('.star')){
+    const k = art.dataset.k;
+    if(stars[k]) delete stars[k]; else stars[k] = 1;
+    store.set('stars', stars);
+    e.target.closest('.star').classList.toggle('on', !!stars[k]);
+    toast(stars[k] ? '⭐ 헷갈림에 추가했어요' : '⭐ 해제했어요');
+    renderStats();
+    if(noteFilter === 'star') renderNotes();
+    return;
+  }
+  if(e.target.closest('.item-top')) art.classList.toggle('open');
+});
+
+// ---------- memos ----------
+let memoType = '';
+document.querySelectorAll('#memoType button').forEach(b => b.addEventListener('click', () => {
+  memoType = b.dataset.t;
+  document.querySelectorAll('#memoType button').forEach(x => x.classList.toggle('on', x === b));
+}));
+function today(){ const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+$('#addMemo').addEventListener('click', () => {
+  const t = $('#memoText').value.trim();
+  if(!t){ $('#memoText').focus(); return; }
+  memos.unshift({id: Date.now().toString(36), text: t, type: memoType, date: today(), sent: false});
+  store.set('memos', memos);
+  $('#memoText').value = '';
+  renderMemos(); renderStats();
+  toast('메모를 저장했어요');
+});
+function renderMemos(){
+  const pending = memos.filter(m => !m.sent).length;
+  $('#memoSum').textContent = memos.length ? `안 보낸 메모 ${pending}개 · 전체 ${memos.length}개` : '';
+  $('#memoList').innerHTML = memos.length ? memos.map(m => `
+    <div class="memo-item${m.sent?' sent':''}" data-id="${esc(m.id)}">
+      <div style="flex:1;min-width:0"><div class="t">${esc(m.text)}</div><div class="m">${esc(m.date)}${m.type?' · '+esc(m.type):''}${m.sent?' · 보냄 ✓':''}</div></div>
+      <button class="x" aria-label="삭제">✕</button>
+    </div>`).join('') : '<div class="empty" style="padding:18px">아직 메모가 없어요.</div>';
+  $('#copyMemo').disabled = !pending;
+  $('#markSent').disabled = !pending;
+  $('#clearSent').disabled = !memos.some(m => m.sent);
+}
+$('#memoList').addEventListener('click', e => {
+  if(!e.target.closest('.x')) return;
+  const id = e.target.closest('.memo-item').dataset.id;
+  if(!confirm('이 메모를 삭제할까요?')) return;
+  memos = memos.filter(m => m.id !== id); store.set('memos', memos); renderMemos(); renderStats();
+});
+function buildPrompt(){
+  const list = memos.filter(m => !m.sent).slice().reverse();
+  const lines = list.map(m => `- [${m.date}${m.type?' / '+m.type:''}] ${m.text}`).join('\n');
+  return `스페인어 학원 노트 정리해줘. 이번 주 수업에서 기억나는 것들이야:\n\n${lines}\n\n각 항목을 class-data.js 형식으로 채워서(뜻, 필요하면 활용표, 예문 3개, 관련 표현, 팁, 퀴즈) 새 주차로 맨 앞에 추가하고, 업로드할 class-data.js 파일을 줘. 내가 틀리게 적은 게 있으면 고쳐서 알려줘.`;
+}
+async function copyText(text){
+  try{ await navigator.clipboard.writeText(text); return true; }
+  catch(e){
+    const ta = document.createElement('textarea'); ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    let ok = false; try{ ok = document.execCommand('copy'); }catch(_){}
+    ta.remove(); return ok;
+  }
+}
+$('#copyMemo').addEventListener('click', async () => {
+  const ok = await copyText(buildPrompt());
+  if(ok) toast('복사했어요! Claude 채팅에 붙여넣으세요'); else prompt('아래 내용을 복사하세요', buildPrompt());
+});
+$('#markSent').addEventListener('click', () => {
+  memos.forEach(m => m.sent = true); store.set('memos', memos); renderMemos(); renderStats(); toast('보낸 메모로 표시했어요');
+});
+$('#clearSent').addEventListener('click', () => {
+  if(!confirm('보낸 메모를 모두 지울까요?')) return;
+  memos = memos.filter(m => !m.sent); store.set('memos', memos); renderMemos(); renderStats();
+});
+
+// ---------- backup ----------
+$('#exportBtn').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify({app:'spanish-class-notes', version:1, exported:new Date().toISOString(), memos, stars}, null, 2)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `학원노트-백업-${today()}.json`;
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+});
+$('#importBtn').addEventListener('click', () => $('#importFile').click());
+$('#importFile').addEventListener('change', async e => {
+  const f = e.target.files[0]; if(!f) return;
+  try{
+    const data = JSON.parse(await f.text());
+    if(!Array.isArray(data.memos)) throw 0;
+    const ids = new Set(memos.map(m => m.id));
+    const add = data.memos.filter(m => m && m.id && typeof m.text === 'string' && !ids.has(m.id));
+    memos = memos.concat(add).sort((a,b) => (b.date||'').localeCompare(a.date||''));
+    stars = Object.assign({}, stars, data.stars && typeof data.stars === 'object' ? data.stars : {});
+    store.set('memos', memos); store.set('stars', stars);
+    renderMemos(); renderStats(); renderNotes();
+    toast(`메모 ${add.length}개를 불러왔어요`);
+  }catch(err){ toast('백업 파일을 읽지 못했어요'); }
+  e.target.value = '';
+});
+
+// ---------- review ----------
+let revFilter = 'all', revMode = 'es', deck = [], pos = 0, known = 0;
+document.querySelectorAll('#revFilter button').forEach(b => b.addEventListener('click', () => {
+  revFilter = b.dataset.r; document.querySelectorAll('#revFilter button').forEach(x => x.classList.toggle('on', x === b)); buildDeck();
+}));
+document.querySelectorAll('#revMode button').forEach(b => b.addEventListener('click', () => {
+  revMode = b.dataset.m; document.querySelectorAll('#revMode button').forEach(x => x.classList.toggle('on', x === b)); buildDeck();
+}));
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]] = [a[j],a[i]]; } return a; }
+function buildDeck(){
+  const hasReal = NOTES.some(w => !w.example);
+  let weeks = NOTES.filter(w => !(w.example && hasReal));
+  if(revFilter === 'latest') weeks = weeks.slice(0, 1);
+  const cards = [];
+  weeks.forEach(w => (w.items||[]).forEach(it => {
+    if(revFilter === 'star' && !stars[itemKey(w,it)]) return;
+    if(revMode === 'quiz') (it.quiz||[]).forEach(z => cards.push({front: z.q, back: z.a, src: it.es}));
+    else if(revMode === 'es') cards.push({front: it.es, back: it.ko, ex: (it.examples||[])[0], src: w.title});
+    else cards.push({front: it.ko, back: it.es, ex: (it.examples||[])[0], src: w.title});
+  }));
+  deck = shuffle(cards); pos = 0; known = 0; renderCard();
+}
+function renderCard(){
+  const area = $('#cardArea');
+  if(!deck.length){ area.innerHTML = `<div class="empty">${revFilter === 'star' ? '⭐ 표시한 항목이 없어요.<br>노트에서 헷갈리는 항목에 ⭐를 눌러보세요.' : '복습할 카드가 없어요.'}</div>`; return; }
+  if(pos >= deck.length){
+    area.innerHTML = `<div class="card3d"><div class="q">🎉 끝!</div><div class="hint">${deck.length}장 중 ${known}장 알았어요</div></div><button class="btn primary block" id="again">다시 섞어서 하기</button>`;
+    $('#again').onclick = buildDeck; return;
+  }
+  const c = deck[pos];
+  area.innerHTML = `<div class="progress">${pos+1} / ${deck.length}</div>
+    <div class="card3d" id="card"><div class="src">${esc(c.src)}</div><div class="q">${esc(c.front)}</div>
+      <div class="a">${esc(c.back)}${c.ex ? `<div class="hint" style="margin-top:12px">${esc(c.ex.es)}<br>${esc(c.ex.ko)}</div>` : ''}</div>
+      <div class="hint" id="tapHint">탭해서 정답 보기</div></div>
+    <div class="grid2"><button class="btn" id="dunno">🤔 다시 볼래요</button><button class="btn primary" id="know">👍 알아요</button></div>`;
+  $('#card').onclick = () => { $('#card').classList.add('flip'); const h = $('#tapHint'); if(h) h.remove(); };
+  $('#know').onclick = () => { known++; pos++; renderCard(); };
+  $('#dunno').onclick = () => { deck.push(deck[pos]); pos++; renderCard(); };
+}
+
+// ---------- init ----------
+renderStats(); renderNotes(); renderMemos();
+const lastTab = store.get('tab', 'notes'); if(lastTab !== 'notes') showTab(lastTab);
+if('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+})();
+</script>
+</body>
+</html>
